@@ -14,7 +14,7 @@ _Note:_ Here is a link to a useful YouTube playlist for that hands-on workshop: 
 
 There is Microservice Authors we will run locally in a Docker container.
 That Microservice we will deploy to Kubernetes on IBM Cloud. 
-The following gif shows the architecture of the sample application. The gifs shows the steps of exercise 3 when we deploy the Microservice to IBM Cloud.
+The following gif shows the steps of exercise 3 when we deploy the Microservice to IBM Cloud.
 
 ![](../../images/lab-4-overview.gif)
 
