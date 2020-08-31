@@ -7,10 +7,14 @@
 ### Setup the IBM Cloud Environment
 
 * [Overview](pre-work/README.md)
-* [Access the Cluster](pre-work/CLOUD_ACCOUNT.md)
-* [Access IBM Cloud Shell and get the code](pre-work/CLOUD_SHELL.md)
+* [Register for IBM Cloud](pre-work/1-REGISTER.md)
+* [Apply your feature code](pre-work/2-FEATURECODE.md)
+* [Create a free Kubernetes cluster](pre-work/3-CREATE_KUBERNETES_CLUSTER.md)
+* [Configure the container registry](pre-work/4-CONTAINER_REGISTRY.md)
+* [Setup for local development and cloud deployment](pre-work/5-SETUP-ALL.md)
+* [Access the Kubernetes cluster](pre-work/6-ACCESS_TO_CLUSTER.md)
 
-### Setup the IBM Cloud application environment
+### Local development exercises
 
 * [Overview](app-env-exercise-01/README.md)
 * [Exercise 1: Setup Istio](app-env-exercise-01/SETUP_ISTIO.md)
@@ -18,7 +22,7 @@
 * [Exercise 3: Expose the gateway via DNS with TLS enabled](app-env-exercise-01/SETUP_ISTIO_INGRESS_TLS.md)
 * [Exercise 4: Setup Keycloak](app-env-exercise-01/SETUP_KEYCLOAK.md)
 
-### Platform security with mTLS 
+### Deploy to the Kubernetes cluster  
 
 * [Exercise 1: Deploy microservices to Kubernetes](p-sec-exercise-01/README.md)
 * [Exercise 2: Secure microservices using Authentication with mTLS](p-sec-exercise-02/README.md)
