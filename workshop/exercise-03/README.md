@@ -1,6 +1,6 @@
-# Lab 4 - Deploy to Kubernetes
+# Deploy to Kubernetes
 
-In this lab we will work in the Kubernetes Web Console and with the Kubernetes CLI. 
+In this exercise we will work in the Kubernetes Web Console and with the Kubernetes CLI. 
 
 > ["Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications."](https://kubernetes.io)
 
@@ -21,8 +21,6 @@ The following gif is an animation of the simplified steps above in a sequence.
 ![](../../images/lab-4-overview.gif)
 
 ---
-
-
 
 ### STEP 1: Ensure you have the terminal session open with the started Docker image and you have downloaded the Cloud Native Starter project also in this running container. 
 
@@ -154,7 +152,7 @@ We have previously talked about the usage of the HealthEndpoint class for our Au
           livenessProbe:
   ```
 
-This is the full [deployment.yaml](../authors-java-jee/deployment/deployment.yaml) file.
+This is the full [deployment.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) file.
 
   ```yaml
   kind: Deployment
@@ -197,7 +195,7 @@ This is the full [deployment.yaml](../authors-java-jee/deployment/deployment.yam
   cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-2. Open the ```../authors-java-jee/deployment/deployment.yaml``` file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
+2. Open the [`../authors-java-jee/deployment/deployment.yaml`](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
 _Note:_ With the specification ```imagePullPolicy: Always``` we force that the image is pulled from the IBM Cloud Container Registry and not cashed image in Kubernetes is possible used, when we change our container image IBM Cloud Container Registry.
 
@@ -262,7 +260,7 @@ In the service we map the NodePort of the cluster to the port 3000 of the Author
 
 ![service](images/lab-4-service.png)
 
-In the [service.yaml](../authors-java-jee/deployment/service-os.yaml) we see a selector of the pod using the label 'app: authors'. 
+In the [service.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/service-os.yaml) we see a selector of the pod using the label 'app: authors'. 
 
 ```yaml
 kind: Service
@@ -314,10 +312,10 @@ spec:
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
 2. Open the Kubernetes dashbord
-   ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
+   ![Open the Kubernetes dashbord](../../images/lab-4-deployment-1.png)
 
 3. In the overview scroll down until you see the created service
-   ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
+   ![In the overview you see the created deployment and the pod](../../images/lab-4-service-1.png)
 
 
 ### Step 5: Verify the running Microservice on Kubernetes 
@@ -335,15 +333,20 @@ spec:
 2. Get nodeport to access the service (do you remember the mapping?)
 
     ```sh
-    $ nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
-    $ echo $nodeport
+    nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
+    echo $nodeport
+    ````
+
+    Example output:
+
+    ```sh
     $ 31347
     ```
 
 3. Open API explorer.
 
     ```sh
-    $ echo http://${clusterip}:${nodeport}/openapi/ui/
+    echo http://${clusterip}:${nodeport}/openapi/ui/
     ```
 
     Sample output:
@@ -359,10 +362,10 @@ spec:
 4. Execute curl to test the **Authors** service.
 
     ```sh
-    $ curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+    curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
     ```
 
-    Sample result:
+    Example output:
     ```
     $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
     ```

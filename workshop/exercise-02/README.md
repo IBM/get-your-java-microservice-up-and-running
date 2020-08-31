@@ -102,7 +102,7 @@ In the following image you see a list of MicroProfile specifications, we will us
 
 For the Authors service to expose the REST API we need to implement three classes:
 
-* [AuthorsApplication](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) class repesents our web application.
+* [AuthorsApplication](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) class repesents our web application.
 * [Author](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/Author.java) class repesents the data structure we use for the Author.
 * [GetAuthor](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) class repesents the REST API.
 
