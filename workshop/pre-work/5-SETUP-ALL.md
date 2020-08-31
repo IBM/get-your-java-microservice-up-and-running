@@ -37,5 +37,5 @@ chmod u+x scripts/*.sh
 ./iks-scripts/check-prerequisites.sh
 ```
 
-#### Step 5: Move on with [Verify Access to Kubernetes on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
+---
 
