@@ -4,7 +4,7 @@
 <!-- All headings MUST be THREE hashmarks (###) -->
 <!-- Indented bullets (4 spaces) will make the first line be a section -->
 
-### Setup the IBM Cloud Environment
+### Setup local and IBM Cloud Environment
 
 * [Overview](pre-work/README.md)
 * [Register for IBM Cloud](pre-work/1-REGISTER.md)
@@ -17,13 +17,13 @@
 ### Exercises
 
 * [Exercise 1: Running the Java Microservice locally](exercise-01/README.md)
-* [Exercise 2: The Java Implementation](exercise-02/README.md)
+* [Exercise 2: The Java implementation](exercise-02/README.md)
 * [Exercise 3: Deploy to the Kubernetes](exercise-03/README.md)
 
 ### Additional Resources
 
 * [Cloud-Native-Starter project](https://github.com/IBM/cloud-native-starter)
-* [Cloud-Native-Starter project security](https://github.com/IBM/cloud-native-starter/security)
-* [Cloud-Native-Starter project reactive](https://github.com/IBM/cloud-native-starter/security)
+* [Security](https://github.com/IBM/cloud-native-starter/security)
+* [Reactive](https://github.com/IBM/cloud-native-starter/security)
 
 

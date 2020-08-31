@@ -1,31 +1,22 @@
 ## Workshop: Get your Java Microservice up and running!
 
-As a developer you should ask yourself: *"How can I make my application (more) secure?"*
+This workshop demonstrates how to build a microservice with Java and how to deploy it to Kubernetes on the IBM Cloud. The microservice in this workshop is kept as simple as possible, so that it can be used as a starting point for other microservices. The microservice has been developed with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
-In this workshop we will show you with an example:
-* How to secure external access to a Kubernetes cluster with TLS on the IBM Cloud
-* How to secure communication between Microservices with Istio and mTLS
-* How to implement authorization and authentication with the Open Source Identity and Access Management system Keycloak and JSON Web Tokens (JWT)
-* With an example application based on our OpenSource project Cloud Native Starter, build with Quarkus and Microprofile
+There are small variations of microservice definitions out there, here is one definition of [Gartner](https://www.gartner.com/en/information-technology/glossary/microservice):
 
-You will learn how to get started with Application Security from two perspectives:
+> A microservice is a service-oriented application component that is tightly scoped, strongly encapsulated, loosely coupled, independently deployable and independently scalable.
 
-* Platform security 
-* Authentication and Authorization implementation
+[And here is additional information related to microservices, provided by IBM.](https://www.ibm.com/cloud/learn/microservices)
 
-The code is available as open source as part of the [Cloud Native Starter](https://github.com/IBM/cloud-native-starter/tree/master/reactive) project. 
-
-The following screenshot shows the web application, you have to logon to see the list of articles.
-
-<kbd><img src="../images/architecture-wep-app-screenshot.png"/></kbd>
+_Note:_ Here is a link to a useful YouTube playlist for that hands-on workshop: [Build and deploy a microservice to Kubernetes](https://ibm.biz/BdzVRY)
 
 ### Architecture
 
-The following diagram shows the architecture of the sample application. There is a Web-App service that serves the Javascript/Vue.js code to the browser. The Web-App code running in the browser invokes a REST API of the Web-API microservice. The Web-API microservice in turn invokes a REST API of the Articles microservice. 
+There is Microservice Authors we will run locally in a Docker container.
+That Microservice we will deploy to Kubernetes on IBM Cloud. 
+The following gif shows the architecture of the sample application. The gifs shows the steps of exercise 3 when we deploy the Microservice to IBM Cloud.
 
-To see the results in the web application, users need to be authenticated and they need to have the role `user`. 
-
-<kbd><img src="../images/architecture-diagram.png"/></kbd>
+![](../../images/lab-4-overview.gif)
 
 ### Estimated time and level
 
@@ -37,56 +28,54 @@ To see the results in the web application, users need to be authenticated and th
 
 After you complete this workshop, you'll understand the following [application security](https://en.wikipedia.org/wiki/Application_security) related topics:
 
-**Application security provided by the platform**
-* [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security)/[HTTPS](https://en.wikipedia.org/wiki/HTTPS)
-* [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication)
+* Java implementation of a Cloud Native RESTFul Java microservice built on open technologies MicroProfile and OpenLiberty. 
+* Describe how to effectively build and run a microservice on a local machine in a container
+* Understands the steps needed to deploy a single microservice to Kubernetes and on the IBM Cloud Kubernetes service
 
-**Application security with Keycloak and Quarkus**
-* [Authentication with Keycloak](https://en.wikipedia.org/wiki/Authentication) on the Web Fronted
-* [Authorization in Quarkus](https://en.wikipedia.org/wiki/Authorization) for specific Microservices in the backend
+### Cloud Native Starter Badge - Level 1
 
-*The scope of this workshop is not to explain every aspect of application security.*
+![Cloud Native Starter Badge - Level 1](../images/cnsl1.png)
+
+> To be prepared to pass the test of the [**Cloud Native Starter Badge - Level 1**](http://ibm.biz/cloud-native-starter-level-1-badge), you should run the hands-on workshop **virtual** or **face to face**, but you can also run the workshop as a **self service**.
 
 ### About this workshop
 
-<!-- The introductory page of the workshop is broken down into the following sections:
+The introductory page of the workshop is broken down into the following sections:
 
 * [Agenda](#agenda)
 * [Compatibility](#compatibility)
 * [Technology Used](#technology-used)
 * [Credits](#credits)
-* [What`s next?](#whats-next?) -->
+* [What`s next?](#whats-next?)
 
 ### Agenda
 
-These are the sections of this workshop, go through all of them in sequence, start with `1. Setup the IBM Cloud Environment` :
+These are the sections of this workshop, go through all of them in sequence, start with `Setup local and IBM Cloud Environment` :
 
- 1. [Setup the IBM Cloud Environment](pre-work/README.md) 
- 2. [Setup the IBM Cloud application environment](app-env-exercise-01/README.md) 
- 3. [Platform security with mTLS](p-sec-exercise-01/README.md) 
- 4. [Application security with Keycloak and Quarkus](app-sec-exercise-01/README.md) 
+ 1. [Setup local and IBM Cloud Environment](pre-work/README.md) 
+ 2. [Running the Java Microservice locally](exercise-01/README.md) 
+ 3. [The Java implementation](exercise-02/README.md) 
+ 4. [Deploy to the Kubernete](exercise-03/README.md) 
 
 ### Compatibility
 
 This workshop has been tested on the following platforms:
 
-* **IBM Cloud Kubernetes Service**: Kubernetes Version 1.17, Istio Version 1.5 on IBM Cloud
-* **IBM Cloud Shell**: Version 1.0.2
+* **IBM Cloud Kubernetes Service**: Kubernetes Version 1.17 on IBM Cloud
+* **Docker desktop**: Version 2.3.0.4
 
 ### Technology Used
 
 * [Microservices architecture](https://en.wikipedia.org/wiki/Microservices)
-* [KEYCLOAK](https://www.keycloak.org)
 * [Jakarta EE](https://jakarta.ee/)
 * [MicroProfile](https://microprofile.io/)
-* [Quarkus](https://quarkus.io/ingress)
-* [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* [Istio](https://https://istio.io)
-* [Vue.js](https://vuejs.org/)
-* [git 2.24.1 or higher](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [yarn 1.22.4 or higher](https://yarnpkg.com)
-* [Node.js v14.6.0 or higher](https://nodejs.org/en/)
-* [Apache Maven 3.6.3](https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html)
+* [Open Liberty](https://openliberty.io/)
+* [git 2.24.1 or higher](https://git-scm.com/book/en/v2/- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+- [curl](https://curl.haxx.se/download.html)
+- [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools)
+  [IBM Cloud CLI releases](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases)
+- [Docker](https://docs.docker.com/v17.12/install/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ### Credits
 
@@ -96,8 +85,6 @@ This workshop has been tested on the following platforms:
 
 ### Additional resources
 
-[Here](BLOGS.md) are some blogs that describe how this project has been implemented-
-
-The presentation that goes with this workshop is available [here](images/App-Security-Final-V1-20200821.pdf).
+[Here](BLOGS.md) are some blogs that describe how this project has been implemented.
 
 
