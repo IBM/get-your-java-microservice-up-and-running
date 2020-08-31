@@ -1,4 +1,4 @@
-# Lab 2 - Running the Java Microservice locally
+# Running the Java Microservice locally
 
 > _**Note:**_ This lab is structured in **understanding** and **hands-on tasks**. 
 

@@ -1,130 +1,361 @@
-# Deploy microservices to Kubernetes
+# Exercise 3 - Understanding the Java Implementation
 
-In a later exercise you will run the application locally.
+> _**Note:**_ This exercise is structured in **understanding** and **hands-on tasks**. 
 
-In this exercise we will run the application in your Kubernetes cluster using precompiled container images for our sample application: articles-secure, web-api-secure, and web-app. These container images have been uploaded to [Docker Hub](https://hub.docker.com/u/haraldu).
+### Step 1: Understanding
 
-When running locally, you will set the Keycloak URL as OpenID Connect (OIDC) provider in application.properties. When running on a Kubernetes cluster we cannot set the OIDC provider (keycloak) in application.properties without recompiling the code, building a new image, and loading this image in a Image repository that is accessible to your Kubernetes cluster. So for this example, we specify the Quarkus OIDC property as environment variable during deployment. The environment variable is read from a config map. 
+### 1 Usage of Maven for Java
 
-### STEP 1: Change `configmap.yaml` entry
+We begin with the [Maven](https://maven.apache.org/) part for our Java project.
 
-In directory IKS, modifify configmap.yaml and edit `QUARKUS_OIDC_AUTH_SERVER_URL` with your keycloak URL. It must end in `/auth/realms/quarkus, enclosed in "".
+> Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a **project object model** (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 
-* Create the `QUARKUS_OIDC_AUTH_SERVER_URL` and copy the URL to insert it in the next step in the `configmap.yaml`
+In the pom file we define the configuration of our Java project with dependencies, build, and properties including the compiler information as you can see in the [pom file](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/pom.xml) below.
 
-```sh
-cd $ROOT_FOLDER/IKS
-export QUARKUS_OIDC_AUTH_SERVER_URL="https://$INGRESSURL/auth/realms/quarkus"
-echo $QUARKUS_OIDC_AUTH_SERVER_URL
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ibm.cloud</groupId>
+	<artifactId>authors</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.microprofile</groupId>
+			<artifactId>microprofile</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>authors</finalName>
+	</build>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
 ```
 
-* Replace the URL in the `configmap.yaml`
+_REMEMBER:_ We use this pom file to build our Authors service with `RUN mvn -f /usr/src/app/pom.xml clean package` inside our **Build environment container**.
 
-```sh
-nano configmap.yaml
+```dockerfile
+FROM maven:3.5-jdk-8 as BUILD
+ 
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
 ```
 
-Example:
+### 2 Configuration the Open Liberty Server
 
-```sh
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: security-url-config
-data:
-  QUARKUS_OIDC_AUTH_SERVER_URL: "https://harald-uebele-*****-0001.containers.appdomain.cloud/auth/realms/quarkus"
+Our Authors microservice will run on an OpenLiberty Server in a container on Kubernetes.
+
+We need to configure the OpenLiberty server with a [server.xml](../authors-java-jee/liberty/server.xml) file. For our Java implementation we decided to use MicroProfile and within the feature definition in the server.xml we provide this information to our server with the entry `microProfile-3`.
+The server must be reached in the network. Therefore we define the httpEndpoint including httpPort we use for our microservice. For configuration details take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
+
+_IMPORTANT:_ We should remember that this port (`httpPort="3000"`) must be exposed in the Dockerfile for our container and mapped inside the Kubernetes deployment configuration.
+
+Also the name of the executable web application is definied in the server.xml.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="OpenLiberty Server">
+	
+    <featureManager>
+        <feature>microProfile-3</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
+
+    <webApplication location="authors.war" contextRoot="api"/>
+
+</server>
 ```
 
-* Apply the `configmap.yaml`
+_Note:_ Later we will change the **contextRoot**.
 
-```sh
-kubectl apply -f configmap.yaml
+### 3 Implementation of the REST GET endpoint with MicroProfile
+
+### 3.1 MicroProfile basics
+
+Some definitions:
+
+> Microservice architecture is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
+
+> Eclipse MicroProfile is a modular set of technologies designed so that you can write cloud-native Java™ microservices. MicroProfile utilizes some of existing tools (JAX-RS, CDI, JSON-P for example), and combine them with new ones to create a baseline platform optimized for a microservice architecture. 
+
+In the following image you see a list of MicroProfile specifications, we will use the red marked ones.
+
+![](images/microprofiles.png)
+
+
+### 3.2 Java classes needed to expose the Authors service
+
+For the Authors service to expose the REST API we need to implement three classes:
+
+* [AuthorsApplication](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) class repesents our web application.
+* [Author](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/Author.java) class repesents the data structure we use for the Author.
+* [GetAuthor](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) class repesents the REST API.
+
+![class diagramm authors](images/authors-java-classdiagram-01.png)
+
+
+
+### 3.2.1 **Class AuthorsApplication**
+
+Our web application does not implement any business or other logic, it simply needs to run on a server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. 
+
+The `AuthorsApplication` class provides access to the classes from the `com.ibm.authors` package at runtime.
+The implementation of the interface class _Application_ enables the usage of easy REST implementation provided by MircoProfile. 
+
+With `@ApplicationPath` from MicroProfile we define the base path of the application.
+
+```java
+package com.ibm.authors;
+
+import javax.ws.rs.core.Application;
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("v1")
+public class AuthorsApplication extends Application {
+}
 ```
 
-### STEP 2: Now deploy the 3 services:
+_Note:_ Later we will change the ApplicationPath in this class.
 
-* Deploy Articles Microservice
+### 3.2.2 Class Author
 
-```sh
-cd $ROOT_FOLDER/articles-secure/deployment
-kubectl apply -f articles.yaml
+This class simply repesents the data structure we use for the [Author](../src/main/java/com/ibm/authors/Author.java). No MircoProfile feature is used here.
+
+```java
+package com.ibm.authors;
+
+public class Author {
+public String name;
+public String twitter;
+public String blog;
+}
 ```
 
-* Deploy Web-API Microservice
+### 3.2.3 Class GetAuthor
 
-```sh
-cd $ROOT_FOLDER/web-api-secure/deployment
-kubectl apply -f web-api.yaml
+This class implements the REST API response for our Authors microservice. We implement the REST endpoint using the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We use  `@Path` and `@Get` statements from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) for the REST endpoint and for the [OpenAPI](https://www.openapis.org/) documentation we use `@OpenAPIDefinition` statements. When you add [MicroProfile with OpenAPI](https://github.com/eclipse/microprofile-open-api), OpenAPI always creates automatically an OpenAPI explorer for you.
+
+_REMEMBER:_ In the server.xml configuration we added **MicroProfile** to the Open Liberty server as a feature, as you see in the code below.
+
+```xml
+<featureManager>
+        <feature>microProfile-3</feature>
+        ....
+</featureManager> 
 ```
 
-* Deploy Web-App [Vue.js](https://vuejs.org/) frontend application
+With the combination of the server.xml and our usage of MicroProfile features in the GetAuthor class we will be able to access an OpenAPI explorer with this URL `http://host:http_port/openapi` later.
 
-```sh
-cd $ROOT_FOLDER/web-app/deployment
-kubectl apply -f web-app.yaml
+This is the source code of the [GetAuthors class](../src/main/java/com/ibm/authors/GetAuthor.java) with the mentioned MicroProfile features:
+
+```java
+@ApplicationScoped
+@Path("/getauthor")
+@OpenAPIDefinition(info = @Info(title = "Authors Service", version = "1.0", description = "Authors Service APIs", contact = @Contact(url = "https://github.com/nheidloff/cloud-native-starter", name = "Niklas Heidloff"), license = @License(name = "License", url = "https://github.com/nheidloff/cloud-native-starter/blob/master/LICENSE")))
+public class GetAuthor {
+
+	@GET
+	@APIResponses(value = {
+		@APIResponse(
+	      responseCode = "404",
+	      description = "Author Not Found"
+	    ),
+	    @APIResponse(
+	      responseCode = "200",
+	      description = "Author with requested name",
+	      content = @Content(
+	        mediaType = "application/json",
+	        schema = @Schema(implementation = Author.class)
+	      )
+	    ),
+	    @APIResponse(
+	      responseCode = "500",
+	      description = "Internal service error"  	      
+	    )
+	})
+	@Operation(
+		    summary = "Get specific author",
+		    description = "Get specific author"
+	)
+	public Response getAuthor(@Parameter(
+            description = "The unique name of the author",
+            required = true,
+            example = "Niklas Heidloff",
+            schema = @Schema(type = SchemaType.STRING))
+			@QueryParam("name") String name) {
+		
+			Author author = new Author();
+			author.name = "Niklas Heidloff";
+			author.twitter = "https://twitter.com/nheidloff";
+			author.blog = "http://heidloff.net";
+
+			return Response.ok(this.createJson(author)).build();
+	}
+
+	private JsonObject createJson(Author author) {
+		JsonObject output = Json.createObjectBuilder().add("name", author.name).add("twitter", author.twitter)
+				.add("blog", author.blog).build();
+		return output;
+	}
+}
 ```
 
-* Verify all pods are running
+_Note:_ Later we will change the return values for the response in the local source code.
 
-```sh
-kubectl get pods
+### 3.3 Supporting live and readiness probes in Kubernetes with HealthCheck
+
+We have added the class HealthEndpoint to the Authors package as you see in the following diagram.
+
+![](../../images/authors-java-classdiagram-02.png)
+
+We want to support this [Kubernetes function](https://github.com/OpenLiberty/guide-kubernetes-microprofile-health#checking-the-health-of-microservices-on-kubernetes):
+
+> Kubernetes provides liveness and readiness probes that are used to check the health of your containers. These probes can check certain files in your containers, check a TCP socket, or make HTTP requests. MicroProfile Health exposes readiness and liveness endpoints on your microservices. Kubernetes polls these endpoints as specified by the probes to react appropriately to any change in the microservice’s status.
+
+For more information check the [Kubernetes Microprofile Health documentation](https://openliberty.io/guides/kubernetes-microprofile-health.html) and the documentation on [GitHub](https://github.com/eclipse/microprofile-health).
+
+This is the implementation of the Health Check for Kubernetes in the [HealthEndpoint class](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) of the Authors service:
+
+```java
+@Readiness
+public class HealthEndpoint implements HealthCheck {
+
+    @Override
+    public HealthCheckResponse call() {
+        return HealthCheckResponse.named("authors").withData("authors", "ok").up().build();
+    }
+}
 ```
 
-Example output:
+_Note:_ Later we will change return information of the **HealthCheckResponse**.
 
-```sh
-NAME                        READY   STATUS                       RESTARTS   AGE
-articles-5df77c46b4-v7xcd   2/2     Running                0          3h35m
-keycloak-77cffb978-vjttk    2/2     Running                      0          44h
-web-api-5c9698b875-kz82k    2/2     Running                 0          3h35m
-web-app-659c4676d9-pw6f8    2/2     Running                      0          3h34m
+This HealthEndpoint is configured in the Kubernetes deployment yaml. In the following yaml extract we see the `livenessProbe` definition.
+
+```yaml
+    livenessProbe:
+      exec:
+        command: ["sh", "-c", "curl -s http://localhost:3000/"]
+      initialDelaySeconds: 20
+    readinessProbe:
+      exec:
+        command: ["sh", "-c", "curl -s http://localhost:3000/health | grep -q authors"]
+      initialDelaySeconds: 40
 ```
 
-### STEP 3: Adjust the redirect, admin, web origins URLs in Keycloak:
+### Hands-on tasks 
+### Change the code of the authors microservice and run the service in a container locally 
 
-* Try to open the Cloud-Native-Starter application in a browser. Use the `$INGRESSURL` of your cluster, which is the URL to the frontend application `Web_APP` you deployed before.
+### Step 1:
+That lab does only need Docker and a terminal session on your local machine.
 
-```sh
-echo https://$INGRESSURL
+```sh 
+$ cd $ROOT_FOLDER/authors-java-jee
+$ docker build -t authors .
+$ docker run -i --rm -p 3000:3000 authors
 ```
 
-* You will see we need to configure the redirect in Keycloak
+### Step 2: Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi".
 
-![](../../images/cns-wrong-redirect-uri.png)
+Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in a editor and change the value.
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="OpenLiberty Server">
+	
+    <featureManager>
+        <feature>microProfile-3</feature>
+    </featureManager>
 
-* Open Keycloak in a browser and login to Keycloak with `user: admin` and `password: admin`. Get the right URL by display the URL with the following terminal command.
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
 
-```sh
- echo https://$INGRESSURL/auth/admin/master/console/#/realms/quarkus
+    <webApplication location="authors.war" contextRoot="myapi"/>
+
+</server>
 ```
 
-* Select `Clients` and then `frontend` in Keycloak.
+### Step 3: Change the @ApplicationPath in the class [AuthorsApplication.java](../authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1".
 
-![](../../images/cns-ajust-client-redirect.png)
+Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java``` in a editor and change the value.
 
-* Ajust the client frontend URIs `https://YOUR-URL:auth` with valid redirect URI you get with the command:
+```java
+package com.ibm.authors;
 
-```sh
- echo https://$INGRESSURL
+import javax.ws.rs.core.Application;
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("myv1")
+public class AuthorsApplication extends Application {
+}
 ```
 
-Replace the entries with your value.
+### Step 4: In the class [GetAuthor.java](../authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME".
 
-![](../../images/cns-ajust-client-redirect-02.png)
+Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java``` in a editor and change the value.
 
-### STEP 4: Open the Cloud Native Starter application in your browser
+``` java
+public Response getAuthor(@Parameter(
+            description = "The unique name of the author",
+            required = true,
+            example = "MY NAME",
+            schema = @Schema(type = SchemaType.STRING))
+			@QueryParam("name") String name) {
+		
+			Author author = new Author();
+			author.name = "MY NAME";
+			author.twitter = "https://twitter.com/MY NAME";
+			author.blog = "http://MY NAME.net";
 
-* Use following URL:
-
-```sh
- echo https://$INGRESSURL
+			return Response.ok(this.createJson(author)).build();
+	}
 ```
 
-* Login in with `user: alice` and `password: alice`
+### Step 5: In the class [HealthEndpoint.java](../authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop".
 
-![](../../images/cns-logon-keycloak.png)
+```java
+@Health
+@ApplicationScoped
+public class HealthEndpoint implements HealthCheck {
 
-* Now you see the entries of the articles
+    @Override
+    public HealthCheckResponse call() {
+        return HealthCheckResponse.named("authors").withData("authors", "ok for the workshop").up().build();
+    }
+}
+```
 
-![](../../images/cns-web-app-ui.png)
+### Step 6: To test and see how the code works you can run the code locally as a Docker container:
+
+```
+cd $ROOT_FOLDER/authors-java-jee
+docker build -t authors .
+docker run -i --rm -p 3000:3000 authors
+```
+
+### Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
+
+```http://localhost:3000/openapi/ui/```
+
+![](../../images/changed-authors-open-api.png)
+
+### Step 7: Open the health check of the mircoservice in a browser and verfiy the changes
+
+```http://localhost:3000/health```
+
+![health](images/changed-authors-healthcheck.png)
+
+---
