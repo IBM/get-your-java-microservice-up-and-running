@@ -26,7 +26,7 @@ The following gif shows the steps of exercise 3 when we deploy the Microservice 
 
 ### Objectives
 
-After you complete this workshop, you'll understand the following [application security](https://en.wikipedia.org/wiki/Application_security) related topics:
+After you complete this workshop, you'll should understand the following topics:
 
 * Java implementation of a Cloud Native RESTFul Java Microservice built on open technologies MicroProfile and OpenLiberty. 
 * Describe how to effectively build and run a Microservice on a local machine in a container
