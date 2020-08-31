@@ -13,12 +13,12 @@ This lab has two parts:
 > 1. Start build and save the container image
 
 > 2. Deploy the application and expose the service
->    * We will define and apply a deployment configuration (yaml) to create a Pod with our microservice
->    * We will define a service which routes requests to the Pod with our microservice
+>    * We will define and apply a deployment configuration (yaml) to create a Pod with our Microservice
+>    * We will define a service which routes requests to the Pod with our Microservice
 
 The following gif is an animation of the simplified steps above in a sequence.
 
-![overview gif](images/lab-4-overview.gif)
+![](../../images/lab-4-overview.gif)
 
 ---
 
@@ -44,7 +44,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
     ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](images/verify-cluster-access-4.png)
 
-2. Logon to the IBM Cloud Container Registry (Ensure you are in the $ROOT_FOLDER/authors-java-jee)
+2. Logon to the IBM Cloud Container Registry (Ensure you are in the `$ROOT_FOLDER/authors-java-jee`)
 
     ```sh
     cd $ROOT_FOLDER/authors-java-jee
@@ -193,8 +193,8 @@ This is the full [deployment.yaml](../authors-java-jee/deployment/deployment.yam
 
 1. Ensure you are in the ```$ROOT_FOLDER/authors-java-jee/deployment```
 
-  ```
-  $ cd $ROOT_FOLDER/authors-java-jee/deployment
+  ```sh
+  cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
 2. Open the ```../authors-java-jee/deployment/deployment.yaml``` file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
@@ -224,7 +224,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ kubectl apply -f deployment.yaml
     ```
     
-#### Step 2: Verify the deployment with kubectl
+### Step 2: Verify the deployment with kubectl
 
 1. Insert this command and verify the output.
 
@@ -239,7 +239,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
     ```
 
-#### Step 3: Verify the deployment with the **Kubernetes dashboard** 
+### Step 3: Verify the deployment with the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -252,13 +252,13 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
   ![In the overview you see the created deployment and the pod](images/lab-4-deployment-2.png)
 
 
-# 3. Apply the service
+### 3. Apply the service
 
 After the definition of the Pod we need to define how to access the Pod. For this we use a service in Kubernetes. For more details see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) for service.
 
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
-In the service we map the NodePort of the cluster to the port 3000 of the Authors microservice running in the authors Pod, as we can see in the following picture.
+In the service we map the NodePort of the cluster to the port 3000 of the Authors Microservice running in the authors Pod, as we can see in the following picture.
 
 ![service](images/lab-4-service.png)
 
@@ -283,19 +283,19 @@ spec:
 
 ---
 
-#### Step 1: Ensure you are in the `$ROOT_FOLDER/authors-java-jee/deployment`
+### Step 1: Ensure you are in the `$ROOT_FOLDER/authors-java-jee/deployment`
 
   ```sh
   $ cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-#### Step 2: Apply the service specification
+### Step 2: Apply the service specification
 
   ```sh
   $ kubectl apply -f service.yaml
   ```
 
-#### Step 3: Verify the service in Kubernetes with kubectl
+### Step 3: Verify the service in Kubernetes with kubectl
 
   ```sh
   $ kubectl get services
@@ -309,7 +309,7 @@ spec:
     $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
   ```
 
-#### Step 4: Verify the service in the **Kubernetes dashboard** 
+### Step 4: Verify the service in the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -320,7 +320,7 @@ spec:
    ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
 
 
-#### Step 5: Verify the running microservice on Kubernetes 
+### Step 5: Verify the running Microservice on Kubernetes 
 
 1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) 
 
@@ -384,7 +384,7 @@ Example output:
 
        ![](../../images/authors-java-health.png)
 
-    2. We can simply delete the deployed Authors microservice with:
+    2. We can simply delete the deployed Authors Microservice with:
         ```sh
         kubectl delete pods,services -l app=authors
         ```

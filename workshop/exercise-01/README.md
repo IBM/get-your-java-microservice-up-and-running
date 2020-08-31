@@ -4,9 +4,9 @@
 
 ### Step 1: Understanding
 
-In this workshop we run a microservice that has been implemented with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
+In this workshop we run a Microservice that has been implemented with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
-The microservice has been kept as simple as possible, so that it can be used as a starting point for other microservices. It contains the following functionality:
+The Microservice has been kept as simple as possible, so that it can be used as a starting point for other Microservices. It contains the following functionality:
 
 * Image with OpenJ9, OpenJDK, Open Liberty and MicroProfile: [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/Dockerfile)
 * Maven project: [pom.xml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/pom.xml)
@@ -25,7 +25,7 @@ This service provides a REST API 'getauthor'. Normally we would use a database b
 
 ### Definition of the Image
 
-For the image we use a stack of open source components to run the Java microservice on Open Liberty.
+For the image we use a stack of open source components to run the Java Microservice on Open Liberty.
 
 * OpenJ9 0.12.1
 * OpenJDK 8u202-b08 from AdoptOpenJDK
@@ -42,7 +42,7 @@ Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multi
 
 Inside of our Dockerfile we use two stages to build the container image . The reason for the two stages is that we want to be independend of an existing local environment when we build our production services. With this concept we don't have to ensure that e.g. Java and Maven or correct versions of them are installed on the local machine of the developers.
 
-With this two stage approach there is one container responsible to build the microservice, let us call this container build environment container, and another container will contain the microservice itself, we call this the production container. Only this production container is later used.
+With this two stage approach there is one container responsible to build the Microservice, let us call this container build environment container, and another container will contain the Microservice itself, we call this the production container. Only this production container is later used.
 
 
 ### Build environment container
@@ -65,7 +65,7 @@ The starting point for the Production container is an [OpenLiberty container](ht
 
 We copy the Authors service code together with the server.xml for the OpenLiberty server to this container.
 
-_Note:_ The service.xml **defines** `port 3000` as the port where we can reach the Authors microservice. That port must be exposed with `EXPOSE 3000` in the Dockerfile.
+_Note:_ The service.xml **defines** `port 3000` as the port where we can reach the Authors Microservice. That port must be exposed with `EXPOSE 3000` in the Dockerfile.
 
 ```dockerfile
 FROM open-liberty:19.0.0.9-kernel-java11

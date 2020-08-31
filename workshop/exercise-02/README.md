@@ -57,7 +57,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 ### 2 Configuration the Open Liberty Server
 
-Our Authors microservice will run on an OpenLiberty Server in a container on Kubernetes.
+Our Authors Microservice will run on an OpenLiberty Server in a container on Kubernetes.
 
 We need to configure the OpenLiberty server with a [server.xml](../authors-java-jee/liberty/server.xml) file. For our Java implementation we decided to use MicroProfile and within the feature definition in the server.xml we provide this information to our server with the entry `microProfile-3`.
 The server must be reached in the network. Therefore we define the httpEndpoint including httpPort we use for our microservice. For configuration details take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
@@ -91,7 +91,7 @@ Some definitions:
 
 > Microservice architecture is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
 
-> Eclipse MicroProfile is a modular set of technologies designed so that you can write cloud-native Java™ microservices. MicroProfile utilizes some of existing tools (JAX-RS, CDI, JSON-P for example), and combine them with new ones to create a baseline platform optimized for a microservice architecture. 
+> Eclipse MicroProfile is a modular set of technologies designed so that you can write cloud-native Java™ Microservices. MicroProfile utilizes some of existing tools (JAX-RS, CDI, JSON-P for example), and combine them with new ones to create a baseline platform optimized for a Microservice architecture. 
 
 In the following image you see a list of MicroProfile specifications, we will use the red marked ones.
 
@@ -148,7 +148,7 @@ public String blog;
 
 ### 3.2.3 Class GetAuthor
 
-This class implements the REST API response for our Authors microservice. We implement the REST endpoint using the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We use  `@Path` and `@Get` statements from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) for the REST endpoint and for the [OpenAPI](https://www.openapis.org/) documentation we use `@OpenAPIDefinition` statements. When you add [MicroProfile with OpenAPI](https://github.com/eclipse/microprofile-open-api), OpenAPI always creates automatically an OpenAPI explorer for you.
+This class implements the REST API response for our Authors Microservice. We implement the REST endpoint using the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We use  `@Path` and `@Get` statements from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) for the REST endpoint and for the [OpenAPI](https://www.openapis.org/) documentation we use `@OpenAPIDefinition` statements. When you add [MicroProfile with OpenAPI](https://github.com/eclipse/microprofile-open-api), OpenAPI always creates automatically an OpenAPI explorer for you.
 
 _REMEMBER:_ In the server.xml configuration we added **MicroProfile** to the Open Liberty server as a feature, as you see in the code below.
 
@@ -225,7 +225,7 @@ We have added the class HealthEndpoint to the Authors package as you see in the 
 
 We want to support this [Kubernetes function](https://github.com/OpenLiberty/guide-kubernetes-microprofile-health#checking-the-health-of-microservices-on-kubernetes):
 
-> Kubernetes provides liveness and readiness probes that are used to check the health of your containers. These probes can check certain files in your containers, check a TCP socket, or make HTTP requests. MicroProfile Health exposes readiness and liveness endpoints on your microservices. Kubernetes polls these endpoints as specified by the probes to react appropriately to any change in the microservice’s status.
+> Kubernetes provides liveness and readiness probes that are used to check the health of your containers. These probes can check certain files in your containers, check a TCP socket, or make HTTP requests. MicroProfile Health exposes readiness and liveness endpoints on your Microservices. Kubernetes polls these endpoints as specified by the probes to react appropriately to any change in the Microservice’s status.
 
 For more information check the [Kubernetes Microprofile Health documentation](https://openliberty.io/guides/kubernetes-microprofile-health.html) and the documentation on [GitHub](https://github.com/eclipse/microprofile-health).
 
@@ -258,7 +258,7 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
 ```
 
 ### Step 2: Hands-on tasks 
-### Change the code of the authors microservice and run the service in a container locally 
+### Change the code of the authors Microservice and run the service in a container locally 
 
 ### Step 3:
 That lab does only need Docker and a terminal session on your local machine.
