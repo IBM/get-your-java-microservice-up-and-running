@@ -70,12 +70,12 @@ This workshop has been tested on the following platforms:
 * [Jakarta EE](https://jakarta.ee/)
 * [MicroProfile](https://microprofile.io/)
 * [Open Liberty](https://openliberty.io/)
-* [git 2.24.1 or higher](https://git-scm.com/book/en/v2/- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
-- [curl](https://curl.haxx.se/download.html)
-- [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+* [cURL](https://curl.haxx.se/download.html)
+* [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools)
   [IBM Cloud CLI releases](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases)
-- [Docker](https://docs.docker.com/v17.12/install/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [Docker](https://docs.docker.com/v17.12/install/)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ### Credits
 
