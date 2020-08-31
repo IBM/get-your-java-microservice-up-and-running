@@ -33,7 +33,7 @@ So, in order to complete the workshop, you **need** to install [Docker Desktop](
 
 > * **The first terminal session** is for the developer focused exercises 1 and 2.
 
-> * **The second terminal session** is for exercise 3 deploy the microservice to Kubernetes, here you will work in our preconfigured Docker image.
+> * **The second terminal session** is for exercise 3 deploy the Microservice to Kubernetes, here you will work in our preconfigured Docker image.
 
 ![](../../images/cns-terminals.gif)
 
