@@ -8,12 +8,12 @@ In this workshop we run a microservice that has been implemented with Java EE an
 
 The microservice has been kept as simple as possible, so that it can be used as a starting point for other microservices. It contains the following functionality:
 
-* Image with OpenJ9, OpenJDK, Open Liberty and MicroProfile: [Dockerfile](../authors-java-jee/Dockerfile)
-* Maven project: [pom.xml](../authors-java-jee/pom.xml)
-* Open Liberty server configuration: [server.xml](../authors-java-jee/liberty/server.xml)
-* Health endpoint: [HealthEndpoint.java](../authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java)
-* Kubernetes yaml files: [deployment.yaml](../authors-java-jee/deployment/deployment.yaml) and [service.yaml](../authors-java-jee/deployment/service.yaml)
-* Sample REST GET endpoint: [AuthorsApplication.java](../authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java), [GetAuthor.java](../authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) and [Author.java](../authors-java-jee/src/main/java/com/ibm/authors/Author.java)
+* Image with OpenJ9, OpenJDK, Open Liberty and MicroProfile: [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/Dockerfile)
+* Maven project: [pom.xml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/pom.xml)
+* Open Liberty server configuration: [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/liberty/server.xml)
+* Health endpoint: [HealthEndpoint.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java)
+* Kubernetes yaml files: [deployment.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) and [service.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/service.yaml)
+* Sample REST GET endpoint: [AuthorsApplication.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java), [GetAuthor.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) and [Author.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/Author.java)
 
 This service provides a REST API 'getauthor'. Normally we would use a database but in this example we just simulate with local sample data. With this small example we touch the following topics:
 
