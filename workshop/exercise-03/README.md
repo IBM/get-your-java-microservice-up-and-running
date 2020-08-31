@@ -392,3 +392,5 @@ Example output:
         kubectl delete pods,services -l app=authors
         ```
 ---
+
+**Congratulations** you have finished this **hands-on workshop**. Maybe you want to verify your learning in the  [Cloud Native Starter Level 1 Badge](https://www.youracclaim.com/org/ibm/badge/cloud-native-starter-level-1).

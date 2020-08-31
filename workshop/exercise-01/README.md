@@ -81,12 +81,12 @@ RUN configure.sh
 EXPOSE 3000
 ```
 
-### Hands-on tasks - Run the container locally
+### Step 2: Hands-on tasks - Run the container locally
 
 That lab needs a local Docker installation.
 
 
-### Step 1: Test the Microservice in a local container
+### Step 3: Test the Microservice in a local container
 
 Open the the Terminal session where you cloned the Cloud-Native-Starter project to your local computer.
 
@@ -96,7 +96,7 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-### Step 2: Open the Swagger UI of the mircoservice in a browser.
+### Step 4: Open the Swagger UI of the mircoservice in a browser.
 
 ```
 http://localhost:3000/openapi/ui/
@@ -106,5 +106,3 @@ http://localhost:3000/openapi/ui/
 
 
 ---
-
-:star: __Continue with [Lab 3 - Understanding the Java Implementation](./3-java.md#lab-3---understanding-the-java-implementation)__
