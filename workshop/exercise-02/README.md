@@ -1,8 +1,8 @@
-# Exercise 3 - Understanding the Java Implementation
+# Exercise 3 - The Java Implementation
 
 > _**Note:**_ This exercise is structured in **understanding** and **hands-on tasks**. 
 
-### Step 1: Understanding
+### Step 1: Understand
 
 ### 1 Usage of Maven for Java
 
