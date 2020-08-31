@@ -1,4 +1,4 @@
-# Create a free Kubernetes Cluster <a name="part-SETUP-02"></a>
+# Create a free Kubernetes Cluster
 
 ### Step 1: Logon to IBM Cloud
 

@@ -1,4 +1,4 @@
-# Register for IBM Cloud <a name="part-SETUP-00"></a>
+# Register for IBM Cloud
 
 ### Step 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
 

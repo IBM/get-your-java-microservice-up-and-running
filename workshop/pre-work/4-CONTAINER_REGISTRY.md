@@ -1,4 +1,4 @@
-# Configure the IBM Cloud Container Registry <a name="part-SETUP-03"></a>
+# Configure the IBM Cloud Container Registry
 
 ### STEP 1: Select in **Kubernetes** the entry **Registry** and ensure your are in the **Dallas location**.
 
