@@ -257,10 +257,10 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
       initialDelaySeconds: 40
 ```
 
-### Hands-on tasks 
+### Step 2: Hands-on tasks 
 ### Change the code of the authors microservice and run the service in a container locally 
 
-### Step 1:
+### Step 3:
 That lab does only need Docker and a terminal session on your local machine.
 
 ```sh 
@@ -269,7 +269,7 @@ $ docker build -t authors .
 $ docker run -i --rm -p 3000:3000 authors
 ```
 
-### Step 2: Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi".
+### Step 4: Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi".
 
 Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in a editor and change the value.
 
@@ -288,9 +288,9 @@ Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in 
 </server>
 ```
 
-### Step 3: Change the @ApplicationPath in the class [AuthorsApplication.java](../authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1".
+### Step 5: Change the @ApplicationPath in the class [AuthorsApplication.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1".
 
-Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java``` in a editor and change the value.
+Open the file `cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java` in a editor and change the value.
 
 ```java
 package com.ibm.authors;
@@ -303,9 +303,9 @@ public class AuthorsApplication extends Application {
 }
 ```
 
-### Step 4: In the class [GetAuthor.java](../authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME".
+### Step 6: In the class [GetAuthor.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME".
 
-Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java``` in a editor and change the value.
+Open the file `cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java` in a editor and change the value.
 
 ``` java
 public Response getAuthor(@Parameter(
@@ -324,7 +324,7 @@ public Response getAuthor(@Parameter(
 	}
 ```
 
-### Step 5: In the class [HealthEndpoint.java](../authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop".
+### Step 7: In the class [HealthEndpoint.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop".
 
 ```java
 @Health
@@ -346,16 +346,16 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-### Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
+### Step 8: Open the swagger UI of the mircoservice in a browser and verfiy the changes
 
 ```http://localhost:3000/openapi/ui/```
 
 ![](../../images/changed-authors-open-api.png)
 
-### Step 7: Open the health check of the mircoservice in a browser and verfiy the changes
+### Step 9: Open the health check of the mircoservice in a browser and verfiy the changes
 
 ```http://localhost:3000/health```
 
-![health](images/changed-authors-healthcheck.png)
+![](images/changed-authors-healthcheck.png)
 
 ---
