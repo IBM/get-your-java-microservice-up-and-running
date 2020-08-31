@@ -1,14 +1,14 @@
 ## Workshop: Get your Java Microservice up and running!
 
-This workshop demonstrates how to build a microservice with Java and how to deploy it to Kubernetes on the IBM Cloud. The microservice in this workshop is kept as simple as possible, so that it can be used as a starting point for other microservices. The microservice has been developed with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
+This workshop demonstrates how to build a Microservice with Java and how to deploy it to Kubernetes on the IBM Cloud. The Microservice in this workshop is kept as simple as possible, so that it can be used as a starting point for other Microservices. The Microservice has been developed with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
-There are small variations of microservice definitions out there, here is one definition of [Gartner](https://www.gartner.com/en/information-technology/glossary/microservice):
+There are small variations of Microservice definitions out there, here is one definition of [Gartner](https://www.gartner.com/en/information-technology/glossary/microservice):
 
-> A microservice is a service-oriented application component that is tightly scoped, strongly encapsulated, loosely coupled, independently deployable and independently scalable.
+> A Microservice is a service-oriented application component that is tightly scoped, strongly encapsulated, loosely coupled, independently deployable and independently scalable.
 
-[And here is additional information related to microservices, provided by IBM.](https://www.ibm.com/cloud/learn/microservices)
+[And here is additional information related to Microservices, provided by IBM.](https://www.ibm.com/cloud/learn/microservices)
 
-_Note:_ Here is a link to a useful YouTube playlist for that hands-on workshop: [Build and deploy a microservice to Kubernetes](https://ibm.biz/BdzVRY)
+_Note:_ Here is a link to a useful YouTube playlist for that hands-on workshop: [Build and deploy a Microservice to Kubernetes](https://ibm.biz/BdzVRY)
 
 ### Architecture
 
@@ -28,11 +28,11 @@ The following gif shows the architecture of the sample application. The gifs sho
 
 After you complete this workshop, you'll understand the following [application security](https://en.wikipedia.org/wiki/Application_security) related topics:
 
-* Java implementation of a Cloud Native RESTFul Java microservice built on open technologies MicroProfile and OpenLiberty. 
-* Describe how to effectively build and run a microservice on a local machine in a container
-* Understands the steps needed to deploy a single microservice to Kubernetes and on the IBM Cloud Kubernetes service
+* Java implementation of a Cloud Native RESTFul Java Microservice built on open technologies MicroProfile and OpenLiberty. 
+* Describe how to effectively build and run a Microservice on a local machine in a container
+* Understands the steps needed to deploy a single Microservice to Kubernetes and on the IBM Cloud Kubernetes service
 
-### Cloud Native Starter Badge - Level 1
+You can verify your learning in the **Cloud Native Starter Badge - Level 1**
 
 ![Cloud Native Starter Badge - Level 1](../images/cnsl1.png)
 
