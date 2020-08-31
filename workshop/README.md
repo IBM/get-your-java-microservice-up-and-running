@@ -85,6 +85,6 @@ This workshop has been tested on the following platforms:
 
 ### Additional resources
 
-[Here](BLOGS.md) are some blogs that describe how this project has been implemented.
+[Here](https://github.com/IBM/cloud-native-starter#documentation---kubernetes-and-microprofile) are some documentations of the project.
 
 
