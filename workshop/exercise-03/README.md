@@ -351,7 +351,7 @@ spec:
 
     Sample output:
     ```sh
-    $ http://184.172.247.228:31347/openapi/ui/
+    http://184.172.247.228:31347/openapi/ui/
     ```
 
     Copy and past the URL in a local browser on your PC:
@@ -367,7 +367,7 @@ spec:
 
     Example output:
     ```
-    $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+    {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
     ```
 
 5. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
@@ -379,7 +379,7 @@ spec:
 Example output:
 
     ```sh
-    $ {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
+    {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
     ```
 
     Optional: 
