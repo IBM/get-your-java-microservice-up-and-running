@@ -23,7 +23,7 @@
 ### Additional Resources
 
 * [Cloud-Native-Starter project](https://github.com/IBM/cloud-native-starter)
-* [Security](https://github.com/IBM/cloud-native-starter/security)
-* [Reactive](https://github.com/IBM/cloud-native-starter/security)
+* [Security](https://github.com/IBM/cloud-native-starter/tree/master/security)
+* [Reactive](https://github.com/IBM/cloud-native-starter/tree/master/reactive)
 
 
