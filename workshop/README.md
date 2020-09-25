@@ -2,7 +2,7 @@
 
 This workshop demonstrates how to build a Microservice with Java and how to deploy it to Kubernetes on the IBM Cloud. The Microservice in this workshop is kept as simple as possible, so that it can be used as a starting point for other Microservices. The Microservice has been developed with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
-* > Useful playlist on YouTube related this workshop: [Build and deploy a microservice to Kubernetes](https://ibm.biz/BdzVRY)
+* > Useful playlist on YouTube related to this workshop: [Build and deploy a microservice to Kubernetes](https://ibm.biz/BdzVRY)
 
 ### What's a Microservice?
 
