@@ -23,7 +23,7 @@ This service provides a REST API 'getauthor'. Normally we would use a database b
 * [Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using a MicroProfile for Kubernetes 
 * Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from [Dockerhub](https://hub.docker.com)
 
-### Definition of the Image
+#### Definition of the Image
 
 For the image we use a stack of open source components to run the Java Microservice on Open Liberty.
 
@@ -45,7 +45,7 @@ Inside of our Dockerfile we use two stages to build the container image . The re
 With this two stage approach there is one container responsible to build the Microservice, let us call this container build environment container, and another container will contain the Microservice itself, we call this the production container. Only this production container is later used.
 
 
-### Build environment container
+#### Build environment container
 
 In the following Dockerfile sample we can see how we create our build environment container based on the maven 3.5 image from [DockerHub](https://hub.docker.com/_/maven/).
 
@@ -59,7 +59,7 @@ COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean package
 ```
 
-### Production container
+#### Production container
 
 The starting point for the Production container is an [OpenLiberty container](https://hub.docker.com/_/open-liberty).
 
@@ -86,7 +86,7 @@ EXPOSE 3000
 That lab needs a local Docker installation.
 
 
-### Step 3: Test the Microservice in a local container
+#### Step 1: Test the Microservice in a local container
 
 Open the the Terminal session where you cloned the Cloud-Native-Starter project to your local computer.
 
@@ -96,7 +96,7 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-### Step 4: Open the Swagger UI of the mircoservice in a browser.
+#### Step 2: Open the Swagger UI of the mircoservice in a browser.
 
 ```
 http://localhost:3000/openapi/ui/

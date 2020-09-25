@@ -222,7 +222,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ kubectl apply -f deployment.yaml
     ```
     
-### Step 2: Verify the deployment with kubectl
+#### Step 2: Verify the deployment with kubectl
 
 1. Insert this command and verify the output.
 
@@ -237,7 +237,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
     ```
 
-### Step 3: Verify the deployment with the **Kubernetes dashboard** 
+#### Step 3: Verify the deployment with the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -281,19 +281,19 @@ spec:
 
 ---
 
-### Step 1: Ensure you are in the `$ROOT_FOLDER/authors-java-jee/deployment`
+#### Step 1: Ensure you are in the `$ROOT_FOLDER/authors-java-jee/deployment`
 
   ```sh
   $ cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-### Step 2: Apply the service specification
+#### Step 2: Apply the service specification
 
   ```sh
   $ kubectl apply -f service.yaml
   ```
 
-### Step 3: Verify the service in Kubernetes with kubectl
+#### Step 3: Verify the service in Kubernetes with kubectl
 
   ```sh
   $ kubectl get services
@@ -307,7 +307,7 @@ spec:
     $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
   ```
 
-### Step 4: Verify the service in the **Kubernetes dashboard** 
+#### Step 4: Verify the service in the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -318,7 +318,7 @@ spec:
    ![In the overview you see the created deployment and the pod](../../images/lab-4-service-1.png)
 
 
-### Step 5: Verify the running Microservice on Kubernetes 
+#### Step 5: Verify the running Microservice on Kubernetes 
 
 1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) 
 
