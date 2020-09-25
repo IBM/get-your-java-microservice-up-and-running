@@ -16,15 +16,15 @@ This lab has two parts:
 >    * We will define and apply a deployment configuration (yaml) to create a Pod with our Microservice
 >    * We will define a service which routes requests to the Pod with our Microservice
 
-The following gif is an animation of the simplified steps above in a sequence.
+The following gif is an animation of the simplified Steps above in a sequence.
 
 ![](../../images/lab-4-overview.gif)
 
 ---
 
-### STEP 1: Ensure you have the terminal session open with the started Docker image and you have downloaded the Cloud Native Starter project also in this running container. 
+### Step 1: Ensure you have the terminal session open with the started Docker image and you have downloaded the Cloud Native Starter project also in this running container. 
 
-### STEP 2:  Navigate to the folder `cloud-native-starter/authors-java-jee` 
+### Step 2:  Navigate to the folder `cloud-native-starter/authors-java-jee` 
 
 _Note:_ The code changes from lab 3 you did on your local computer, don't exist in the running Docker container.
 

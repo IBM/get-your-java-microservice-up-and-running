@@ -1,14 +1,14 @@
 # Register for IBM Cloud
 
-### STEP 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
+### Step 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
 
 ![image](../../images/registration.png)
 
-### STEP 2: Fill in the registration form and follow the link in the **confirmation email** to confirm your account once it arrives.
+### Step 2: Fill in the registration form and follow the link in the **confirmation email** to confirm your account once it arrives.
 
 ![Validation email](../../images/email.png)
 
-### STEP 3: [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using your account credentials.
+### Step 3: [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using your account credentials.
 
 _Note:_ By default, all new IBM Cloud accounts are set to a [lite version](https://www.ibm.com/cloud/pricing).
 

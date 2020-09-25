@@ -1,10 +1,10 @@
 # Configure the IBM Cloud Container Registry
 
-### STEP 1: Select in **Kubernetes** the entry **Registry** and ensure your are in the **Dallas location**.
+### Step 1: Select in **Kubernetes** the entry **Registry** and ensure your are in the **Dallas location**.
 
 ![](../../images/ibmcloud-configure-container-registry-1.gif)
 
-### STEP 2: The create a namespace with a unique name cloud-native-[YOURNAME]
+### Step 2: The create a namespace with a unique name cloud-native-[YOURNAME]
 
 ![](../../images/ibmcloud-configure-container-registry-2.gif)
 
