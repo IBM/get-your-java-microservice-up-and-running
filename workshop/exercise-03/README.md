@@ -26,7 +26,7 @@ The following gif is an animation of the simplified Steps above in a sequence.
 
 ### Step 2:  Navigate to the folder `cloud-native-starter/authors-java-jee` 
 
-_Note:_ The code changes you did in execrise 2 on your local computer, don't exist in the running Docker container.
+_Note:_ You have cloned the project twice: first to your local machine and second into the Docker image. The code changes you did in execrise 2 on your local computer, don't exist in the running Docker container. REMEMBER: 
 
 ### 1. Build and save the container image
 
