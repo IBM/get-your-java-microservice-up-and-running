@@ -30,7 +30,7 @@ _Note:_ The code changes from lab 3 you did on your local computer, don't exist 
 
 ### 1. Build and save the container image
 
-### Step 1: Build and save the container image in the IBM Cloud Container Registry
+#### Step 1: Build and save the container image in the IBM Cloud Container Registry
 
 Now we want to build and save a container image in the IBM Cloud Container Registry. 
 
