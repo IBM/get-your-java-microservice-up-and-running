@@ -8,7 +8,7 @@ You have two options and in both options you will **create no cost**:
 
 > 1. You need a feature code to create an IBM Cloud **Trial** account. 
 >    * You get such feature code when you attend the workshop digital or in face to face.
->    * You get also when you register at the free learning platform [Cognitiveclass AI](https://cognitiveclass.ai/).
+>    * You get also a feature, when you register at the free learning platform [Cognitiveclass AI](https://cognitiveclass.ai/).
 > ![](../../images/cognitiveclass-ai-info.png)
 
 > 2. You create a IBM Lite Account and upgrade your account to a **Pay-As-You-Go** account by using your credit card. ([Account Types](https://cloud.ibm.com/docs/account?topic=account-accounts))
