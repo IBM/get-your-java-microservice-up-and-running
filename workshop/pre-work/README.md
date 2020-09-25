@@ -1,6 +1,8 @@
 # Overview
 
-In order to run this workshop an [IBM Cloud account](https://cloud.ibm.com/registration) and a free Kubernetes Cluster is needed. 
+In order to run this workshop you need an [IBM Cloud account](https://cloud.ibm.com/registration) and free IBM Cloud Kubernetes Cluster.
+
+To create a free IBM Cloud Kubernetes Cluster you need a **Trial Account** or **Pay-As-You-Go Account** for IBM Cloud.
 
 You have two options and in both options you will **create no cost**:
 
