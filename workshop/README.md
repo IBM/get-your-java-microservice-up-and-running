@@ -10,7 +10,7 @@ There are small variations of microservice definitions out there, here is one de
 
 * > A microservice is a service-oriented application component that is tightly scoped, strongly encapsulated, loosely coupled, independently deployable and independently scalable.
 
-* > [More additional information related to microservices, provided by IBM.](https://www.ibm.com/cloud/learn/microservices)
+* > [More additional information related to microservices provided by IBM.](https://www.ibm.com/cloud/learn/microservices)
 
 ### Architecture
 
