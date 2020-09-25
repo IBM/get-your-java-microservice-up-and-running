@@ -95,7 +95,7 @@ Some definitions:
 
 In the following image you see a list of MicroProfile specifications, we will use the red marked ones.
 
-![](images/microprofiles.png)
+![](../../images/microprofiles.png)
 
 
 ### 3.2 Java classes needed to expose the Authors service
@@ -106,7 +106,7 @@ For the Authors service to expose the REST API we need to implement three classe
 * [Author](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/Author.java) class repesents the data structure we use for the Author.
 * [GetAuthor](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) class repesents the REST API.
 
-![class diagramm authors](images/authors-java-classdiagram-01.png)
+![](../../images/authors-java-classdiagram-01.png)
 
 
 
@@ -356,6 +356,6 @@ docker run -i --rm -p 3000:3000 authors
 
 ```http://localhost:3000/health```
 
-![](images/changed-authors-healthcheck.png)
+![](../../images/changed-authors-healthcheck.png)
 
 ---

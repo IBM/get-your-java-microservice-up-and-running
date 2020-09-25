@@ -40,7 +40,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
    
    You can follow the steps in the **Access** tab, by starting from **After your cluster provision ..** and inserting the commands into your terminal session.
 
-    ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](images/verify-cluster-access-4.png)
+    ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](../../images/verify-cluster-access-4.png)
 
 2. Logon to the IBM Cloud Container Registry (Ensure you are in the `$ROOT_FOLDER/authors-java-jee`)
 
@@ -78,7 +78,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
     _Optional:_ Verify the container upload in the IBM Cloud web UI.
 
-    ![authors-java-container-image](images/ibmcloud-container-registry-upload-1.png)
+    ![authors-java-container-image](../../images/ibmcloud-container-registry-upload-1.png)
 
 4. List the container images to verify the upload.
 
@@ -243,7 +243,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 
 2. Open the Kubernetes dashbord
    
-   ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
+   ![Open the Kubernetes dashbord](../../images/lab-4-deployment-1.png)
 
 3. In the overview you see the created deployment and the pod
 
@@ -258,7 +258,7 @@ After the definition of the Pod we need to define how to access the Pod. For thi
 
 In the service we map the NodePort of the cluster to the port 3000 of the Authors Microservice running in the authors Pod, as we can see in the following picture.
 
-![service](images/lab-4-service.png)
+![service](../../images/lab-4-service.png)
 
 In the [service.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/service-os.yaml) we see a selector of the pod using the label 'app: authors'. 
 
@@ -356,7 +356,7 @@ spec:
 
     Copy and past the URL in a local browser on your PC:
 
-    ![authors-java-openapi-explorer](images/authors-java-openapi-explorer-kubernetes.png)
+    ![authors-java-openapi-explorer](../../images/authors-java-openapi-explorer-kubernetes.png)
 
 
 4. Execute curl to test the **Authors** service.

@@ -102,7 +102,7 @@ docker run -i --rm -p 3000:3000 authors
 http://localhost:3000/openapi/ui/
 ```
 
-![Swagger UI](images/authors-swagger-ui.png)
+![Swagger UI](../../images/authors-swagger-ui.png)
 
 
 ---

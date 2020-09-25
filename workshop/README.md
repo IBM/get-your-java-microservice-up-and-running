@@ -18,7 +18,7 @@ In the gif below you see the Authors Microservice, which we will run locally in 
 We will deploy this Authors Microservice to Kubernetes on IBM Cloud. 
 The gif shows the steps of exercise 3 how we deploy that Microservice to IBM Cloud.
 
-![](../../images/lab-4-overview.gif)
+![](../images/lab-4-overview.gif)
 
 ### Estimated time and level
 
