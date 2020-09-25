@@ -16,7 +16,7 @@ This lab has two parts:
 >    * We will define and apply a deployment configuration (yaml) to create a Pod with our Microservice
 >    * We will define a service which routes requests to the Pod with our Microservice
 
-The following gif is an animation of the simplified Steps above in a sequence.
+The following gif is an animation of the simplified steps above in a sequence.
 
 ![](../../images/lab-4-overview.gif)
 
