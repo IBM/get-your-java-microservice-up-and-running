@@ -260,8 +260,9 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
 ### Step 2: Hands-on tasks 
 #### Change the code of the authors Microservice and run the service in a container locally 
 
-#### Step 1:
-That lab does only need Docker and a terminal session on your local machine.
+_Note:_ That lab does only need Docker and a terminal session on your local machine.
+
+#### Step 1: Open a terminal session on you local machine
 
 ```sh 
 $ cd $ROOT_FOLDER/authors-java-jee
