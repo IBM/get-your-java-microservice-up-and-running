@@ -1,6 +1,6 @@
 # Using local Code and the prebuilt Docker image with the Code in the Container 
 
-### Step 1: Code locally - Open a terminal session and run these commands
+### STEP 1: Code locally - Open a terminal session and run these commands
 
 Download the project locally to work in the Developer labs locally.
 
@@ -12,7 +12,7 @@ ROOT_FOLDER=$(pwd)
 
 The local project is needed for Java development labs 2 and 3, because you can't use Docker in the 'cns-workshop-tools' Docker image. (for more see this [article](https://suedbroecker.net/2019/08/27/definition-of-a-dockerfile-to-use-bash-scripts-on-a-windows-10-machine-for-our-cloud-native-starter-workshop/) )
 
-### Step 2: Open new terminal session and run these commands
+### STEP 2: Open new terminal session and run these commands
 
 * Start the container
 
@@ -20,7 +20,7 @@ The local project is needed for Java development labs 2 and 3, because you can't
 docker run -it --rm tsuedbroecker/cns-workshop-tools:v3
 ```
 
-### Step 3: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
+### STEP 3: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
 
 ```
 cd /
@@ -29,7 +29,7 @@ cd cloud-native-starter
 ROOT_FOLDER=$(pwd)
 ```
 
-### Step 4: Verfiy the tool prerequisites on for the workshop
+### STEP 4: Verfiy the tool prerequisites on for the workshop
 
 ```
 chmod u+x iks-scripts/*.sh
