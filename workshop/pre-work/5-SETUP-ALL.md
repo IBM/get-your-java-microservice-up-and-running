@@ -20,7 +20,7 @@ The local project is needed for Java development labs 2 and 3, because you can't
 docker run -it --rm tsuedbroecker/cns-workshop-tools:v3
 ```
 
-#### Step 3: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
+### Step 3: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
 
 ```
 cd /
@@ -29,7 +29,7 @@ cd cloud-native-starter
 ROOT_FOLDER=$(pwd)
 ```
 
-#### Step 4: Verfiy the tool prerequisites on for the workshop
+### Step 4: Verfiy the tool prerequisites on for the workshop
 
 ```
 chmod u+x iks-scripts/*.sh
