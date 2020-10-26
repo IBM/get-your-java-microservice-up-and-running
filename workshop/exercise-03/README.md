@@ -219,7 +219,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 3. Now we apply the deployment and we create a new **Authors** Pod.
 
     ```sh
-    $ kubectl apply -f deployment.yaml
+    kubectl apply -f deployment.yaml
     ```
     
 #### Step 2: Verify the deployment with kubectl
@@ -227,7 +227,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 1. Insert this command and verify the output.
 
     ```sh
-    $ kubectl get pods
+    kubectl get pods
     ```
 
     Sample output:
@@ -284,27 +284,27 @@ spec:
 #### Step 1: Ensure you are in the `$ROOT_FOLDER/authors-java-jee/deployment`
 
   ```sh
-  $ cd $ROOT_FOLDER/authors-java-jee/deployment
+  cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
 #### Step 2: Apply the service specification
 
   ```sh
-  $ kubectl apply -f service.yaml
+  kubectl apply -f service.yaml
   ```
 
 #### Step 3: Verify the service in Kubernetes with kubectl
 
   ```sh
-  $ kubectl get services
+  kubectl get services
   ```
 
   Sample output:
 
   ```sh
-    $ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-    $ authors      NodePort    172.21.107.135   <none>        3000:31347/TCP   22s
-    $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
+  NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+  authors      NodePort    172.21.107.135   <none>        3000:31347/TCP   22s
+  kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
   ```
 
 #### Step 4: Verify the service in the **Kubernetes dashboard** 
@@ -320,12 +320,15 @@ spec:
 
 #### Step 5: Verify the running Microservice on Kubernetes 
 
-1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) 
+1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) and show the IP address
 
     ```sh
-    $ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
+    clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
+    ```
+
+    ```sh
     $ echo $clusterip
-    $ 184.172.247.228
+    184.172.247.228
     ```
 
    > Expose a public port on your worker node and use the public IP address of the worker node to access your service in the cluster publicly from the internet.
@@ -335,7 +338,7 @@ spec:
     ```sh
     nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
     echo $nodeport
-    ````
+    ```
 
     Example output:
 
