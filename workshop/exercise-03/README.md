@@ -312,10 +312,12 @@ spec:
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
 2. Open the Kubernetes dashbord
-   ![Open the Kubernetes dashbord](../../images/lab-4-deployment-1.png)
+   
+  ![](../../images/lab-4-deployment-1.png)
 
 3. In the overview scroll down until you see the created service
-   ![In the overview you see the created deployment and the pod](../../images/lab-4-service-1.png)
+   
+  ![](../../images/lab-4-service-1.png)
 
 
 #### Step 5: Verify the running Microservice on Kubernetes 
@@ -380,15 +382,15 @@ spec:
 
 5. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
 
-  ```sh
-  curl http://${clusterip}:${nodeport}/health
-  ```
+   ```sh
+   curl http://${clusterip}:${nodeport}/health
+   ```
 
-Example output:
+  Example output:
 
-  ```sh
-  {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
-  ```
+   ```sh
+   {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
+   ```
 
 Optional:
 
