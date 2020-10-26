@@ -327,7 +327,12 @@ spec:
     ```
 
     ```sh
-    $ echo $clusterip
+    echo $clusterip
+    ```
+    
+    Example output:
+
+    ```sh
     184.172.247.228
     ```
 
@@ -375,25 +380,27 @@ spec:
 
 5. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
 
-    ```sh
-    curl http://${clusterip}:${nodeport}/health
-    ```
+  ```sh
+  curl http://${clusterip}:${nodeport}/health
+  ```
 
 Example output:
 
-    ```sh
-    {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
-    ```
+  ```sh
+  {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
+  ```
 
-    Optional: 
-    1. We can also verify that call in the browser.
+Optional:
 
-       ![](../../images/authors-java-health.png)
+1. We can also verify that call in the browser.
 
-    2. We can simply delete the deployed Authors Microservice with:
-        ```sh
-        kubectl delete pods,services -l app=authors
-        ```
+  ![](../../images/authors-java-health.png)
+
+2. We can simply delete the deployed Authors Microservice with:
+      
+  ```sh
+  kubectl delete pods,services -l app=authors
+  ```
 ---
 
 **Congratulations** you have finished this **hands-on workshop**. Maybe you want to verify your learning in the [Cloud Native Starter Level 1 Badge](https://www.youracclaim.com/org/ibm/badge/cloud-native-starter-level-1).
