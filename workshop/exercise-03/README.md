@@ -70,10 +70,12 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     ibmcloud cr build -f Dockerfile --tag [YOUR_REGISTRY]/[YOUR_REGISTRY_NAMESPACE]/authors:1 .
     ```
 
-    _Example output:_
+    _Example command:_ 
+    * `[YOUR_REGISTRY] = us.icr.io`
+    * `[YOUR_REGISTRY_NAMESPACE] = cloud-native-suedbro`
 
     ```sh
-    $ ibmcloud cr build -f Dockerfile --tag us.icr.io/cloud-native-suedbro/authors:1 .
+    ibmcloud cr build -f Dockerfile --tag us.icr.io/cloud-native-suedbro/authors:1 .
     ```
 
     _Optional:_ Verify the container upload in the IBM Cloud web UI.
