@@ -249,7 +249,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 
 3. In the overview you see the created deployment and the pod
 
-  ![In the overview you see the created deployment and the pod](images/lab-4-deployment-2.png)
+  ![In the overview you see the created deployment and the pod](../../images/lab-4-deployment-2.png)
 
 
 ### 3. Apply the service
