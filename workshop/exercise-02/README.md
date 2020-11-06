@@ -265,9 +265,9 @@ _Note:_ That lab does only need Docker and a terminal session on your local mach
 #### Step 1: Open a terminal session on you local machine
 
 ```sh 
-$ cd $ROOT_FOLDER/authors-java-jee
-$ docker build -t authors .
-$ docker run -i --rm -p 3000:3000 authors
+cd $ROOT_FOLDER/authors-java-jee
+docker build -t authors .
+docker run -i --rm -p 3000:3000 authors
 ```
 
 #### Step 2: Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi".
@@ -341,21 +341,26 @@ public class HealthEndpoint implements HealthCheck {
 
 #### Step 6: To test and see how the code works you can run the code locally as a Docker container:
 
-```
+```sh
 cd $ROOT_FOLDER/authors-java-jee
 docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-#### Step 8: Open the swagger UI of the mircoservice in a browser and verfiy the changes
+#### Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
 
-```http://localhost:3000/openapi/ui/```
+```sh
+http://localhost:3000/openapi/ui/
+```
 
 ![](../../images/changed-authors-open-api.png)
 
-#### Step 9: Open the health check of the mircoservice in a browser and verfiy the changes
 
-```http://localhost:3000/health```
+#### Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
+
+```sh
+http://localhost:3000/health
+```
 
 ![](../../images/changed-authors-healthcheck.png)
 
