@@ -6,16 +6,16 @@ This is a preparation for exercise 3, when we will connect to the free Kubernete
 
 ## Step 2: Select **Kubernetes** in the menu
 
-![Select Kubernetes in the menu](../../images/verify-cluster-access-1.png)
+![Select Kubernetes in the menu](../images/verify-cluster-access-1.png)
 
 ## Step 3: Chose **Clusters** and click on your **Kubernetes cluster**
 
-![Chose Clusters and click on your Kubernetes cluster](../../images/verify-cluster-access-2.png)
+![Chose Clusters and click on your Kubernetes cluster](../images/verify-cluster-access-2.png)
 
 ## Step 4: Follow the steps in the **Access** tab, by starting from **After your cluster provision, gain Access** and insert the commands into your **second** terminal session
 
 _Note:_ Ensure you are in the terminal session with the running Docker container.
 
-![cluster](../../images/verify-cluster-access-4.png)
+![cluster](../images/verify-cluster-access-4.png)
 
 ---

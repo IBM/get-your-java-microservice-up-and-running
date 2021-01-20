@@ -95,7 +95,7 @@ Some definitions:
 
 In the following image you see a list of MicroProfile specifications, we will use the red marked ones.
 
-![microprofiles](../../images/microprofiles.png)
+![microprofiles](../images/microprofiles.png)
 
 ##### 3.2 Java classes needed to expose the Authors service
 
@@ -105,7 +105,7 @@ For the Authors service to expose the REST API we need to implement three classe
 * [Author](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/Author.java) class repesents the data structure we use for the Author.
 * [GetAuthor](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) class repesents the REST API.
 
-![classdiagram](../../images/authors-java-classdiagram-01.png)
+![classdiagram](../images/authors-java-classdiagram-01.png)
 
 ###### 3.2.1 **Class AuthorsApplication**
 
@@ -218,7 +218,7 @@ _Note:_ Later we will change the return values for the response in the local sou
 
 We have added the class HealthEndpoint to the Authors package as you see in the following diagram.
 
-![classdiagram](../../images/authors-java-classdiagram-02.png)
+![classdiagram](../images/authors-java-classdiagram-02.png)
 
 We want to support this [Kubernetes function](https://github.com/OpenLiberty/guide-kubernetes-microprofile-health#checking-the-health-of-microservices-on-kubernetes):
 
@@ -359,7 +359,7 @@ docker run -i --rm -p 3000:3000 authors
 http://localhost:3000/openapi/ui/
 ```
 
-![changed-authors-open-api](../../images/changed-authors-open-api.png)
+![changed-authors-open-api](../images/changed-authors-open-api.png)
 
 ## Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
 
@@ -367,6 +367,6 @@ http://localhost:3000/openapi/ui/
 http://localhost:3000/health
 ```
 
-![changed-authors-healthcheck](../../images/changed-authors-healthcheck.png)
+![changed-authors-healthcheck](../images/changed-authors-healthcheck.png)
 
 ---

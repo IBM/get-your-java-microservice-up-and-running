@@ -1,0 +1,111 @@
+# Project information
+site_name: Get Java Microservices Up and Running
+site_url: https://ibm.github.io/get-your-java-microservice-up-and-running
+site_author: IBM Developer
+
+# Repository
+repo_name: get-your-java-microservice-up-and-running
+repo_url: https://github.com/ibm/get-your-java-microservice-up-and-running
+edit_uri: edit/master/workshop
+docs_dir: workshop
+
+# Navigation
+nav:
+  - Welcome:
+    - About the workshop: README.md
+  - Setup:
+    - Overview: pre-work/README.md
+    - Register for IBM Cloud: pre-work/1-REGISTER.md
+    - Apply your feature code: pre-work/2-FEATURECODE.md
+    - Create a free Kubernetes cluster: pre-work/3-CREATE_KUBERNETES_CLUSTER.md
+    - Configure the container registry: pre-work/4-CONTAINER_REGISTRY.md
+    - Setup for local development and cloud deployment: pre-work/5-SETUP-ALL.md
+    - Access the Kubernetes cluster: pre-work/6-ACCESS_TO_CLUSTER.md
+  - Workshop:
+    - Step 1. Running the Java Microservice locally: exercise-01/README.md
+    - Step 2. The Java implementation: exercise-02/README.md
+    - Step 3. Deploy to the Kubernetes: exercise-03/README.md
+  - References:
+    - IBM Developer: https://developer.ibm.com
+    - IBM Developer Containers: https://developer.ibm.com/technologies/containers
+    - IBM Developer Java: https://developer.ibm.com/technologies/java
+    - Cloud-Native-Starter project: https://github.com/IBM/cloud-native-starter)
+    - Security: https://github.com/IBM/cloud-native-starter/tree/master/security)
+    - Reactive: https://github.com/IBM/cloud-native-starter/tree/master/reactive)
+
+## DO NOT CHANGE BELOW THIS LINE
+
+# Copyright
+copyright: Copyright &copy; 2020 IBM Developer
+
+# Theme
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  icon:
+    logo: material/library
+  features:
+    # - navigation.tabs
+    - navigation.instant
+    - navigation.expand
+  palette:
+    scheme: default
+    primary: blue
+    accent: blue
+
+# Plugins
+plugins:
+  - search
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ibm
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/ibmdeveloper
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/ibm/
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/user/developerworks
+    - icon: fontawesome/brands/dev
+      link: https://dev.to/ibmdeveloper
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
