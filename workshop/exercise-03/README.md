@@ -1,30 +1,30 @@
 # Deploy to Kubernetes
 
-In this exercise we will work in the Kubernetes Web Console and with the Kubernetes CLI. 
+In this exercise we will work in the Kubernetes Web Console and with the Kubernetes CLI.
 
 > ["Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications."](https://kubernetes.io)
 
 The following image is a simplified overview of the topics of that lab.
 
-![](../../images/lab-4-overview.png)
+![overview](../../images/lab-4-overview.png)
 
-This lab has two parts: 
+This lab has two parts:
 
 > 1. Start build and save the container image
-
-> 2. Deploy the application and expose the service
+>
+> 1. Deploy the application and expose the service
 >    * We will define and apply a deployment configuration (yaml) to create a Pod with our Microservice
 >    * We will define a service which routes requests to the Pod with our Microservice
 
 The following gif is an animation of the simplified steps above in a sequence.
 
-![](../../images/lab-4-overview.gif)
+![overview](../../images/lab-4-overview.gif)
 
 ---
 
-### Step 1: Ensure you have the terminal session open with the started Docker image and you have downloaded the Cloud Native Starter project also in this running container. 
+## Step 1: Ensure you have the terminal session open with the started Docker image and you have downloaded the Cloud Native Starter project also in this running container
 
-### Step 2:  Navigate to the folder `cloud-native-starter/authors-java-jee` 
+## Step 2:  Navigate to the folder `cloud-native-starter/authors-java-jee`
 
 _Note:_ You have cloned the project twice: first to your local machine and second into the Docker image. The code changes you did in execrise 2 on your local computer, don't exist in the running Docker container.
 
@@ -32,12 +32,12 @@ _Note:_ You have cloned the project twice: first to your local machine and secon
 
 #### Step 1: Build and save the container image in the IBM Cloud Container Registry
 
-Now we want to build and save a container image in the IBM Cloud Container Registry. 
+Now we want to build and save a container image in the IBM Cloud Container Registry.
 
 1. Ensure you logon on to IBM Cloud.
-   
-   >REMEMBER: You should know this from the prerequisites. 
-   
+
+   >REMEMBER: You should know this from the prerequisites.
+
    You can follow the steps in the **Access** tab, by starting from **After your cluster provision ..** and inserting the commands into your terminal session.
 
     ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](../../images/verify-cluster-access-4.png)
@@ -49,7 +49,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     ibmcloud cr login
     ```
 
-2. List you namespaces inside the IBM Cloud Container Registry 
+3. List you namespaces inside the IBM Cloud Container Registry
 
     ```sh
     ibmcloud cr namespaces
@@ -60,17 +60,17 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     ```sh
     $ Listing namespaces for account 'Thomas Suedbroecker's Account' in registry 'us.icr.io'...
     $
-    $ Namespace   
-    $ cloud-native-suedbro   
+    $ Namespace
+    $ cloud-native-suedbro
     ```
 
-3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the information from step 3, where we got the list of namespaces.
+4. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the information from step 3, where we got the list of namespaces.
 
     ```sh
     ibmcloud cr build -f Dockerfile --tag [YOUR_REGISTRY]/[YOUR_REGISTRY_NAMESPACE]/authors:1 .
     ```
 
-    _Example command:_ 
+    _Example command:_
     * `[YOUR_REGISTRY] = us.icr.io`
     * `[YOUR_REGISTRY_NAMESPACE] = cloud-native-suedbro`
 
@@ -82,7 +82,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
     ![authors-java-container-image](../../images/ibmcloud-container-registry-upload-1.png)
 
-4. List the container images to verify the upload.
+5. List the container images to verify the upload.
 
     ```sh
     ibmcloud cr images
@@ -93,13 +93,13 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     ```sh
     $ Listing images...
     $
-    $ Repository                               Tag   Digest         Namespace              Created         Size     Security status   
-    $ us.icr.io/cloud-native-suedbro/authors   1     5a86758f1056   cloud-native-suedbro   2 minutes ago   226 MB   3 Issues   
+    $ Repository                               Tag   Digest         Namespace              Created         Size     Security status
+    $ us.icr.io/cloud-native-suedbro/authors   1     5a86758f1056   cloud-native-suedbro   2 minutes ago   226 MB   3 Issues
     $
     $ OK
     ```
 
-5. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
+6. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
 
 ---
 
@@ -108,11 +108,11 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 This deployment will deploy a container to a Pod in Kubernetes.
 For more details we use the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) for Pods.
 
-> A Pod is the basic building block of Kubernetes–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster .
+> A Pod is the basic building block of Kubernetes-the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster .
 
 Here is a simplified image for that topic. The deployment.yaml file points to the container image that needs to be instantiated in the pod.
 
-![](../../images/lab-4-deployment.png)
+![deployment](../../images/lab-4-deployment.png)
 
 Let's start with the deployment yaml. For more details see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for deployments.
 
@@ -137,12 +137,11 @@ In the `spec` section we specify an app name and version label.
           version: v1
   ```
 
-Then we define a `name` for the container and we provide the container `image` location, e.g. where the container can be found in the **Container Registry**. 
+Then we define a `name` for the container and we provide the container `image` location, e.g. where the container can be found in the **Container Registry**.
 
 The `containerPort` depends on the port definition inside our Dockerfile and in our server.xml.
 
 We have previously talked about the usage of the HealthEndpoint class for our Authors service and here we see it the `livenessProbe` definition.
-
 
   ```yml
   spec:
@@ -197,7 +196,7 @@ This is the full [deployment.yaml](https://github.com/IBM/cloud-native-starter/b
   cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-2. Open the [`../authors-java-jee/deployment/deployment.yaml`](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
+1. Open the [`../authors-java-jee/deployment/deployment.yaml`](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
 _Note:_ With the specification ```imagePullPolicy: Always``` we force that the image is pulled from the IBM Cloud Container Registry and not cashed image in Kubernetes is possible used, when we change our container image IBM Cloud Container Registry.
 
@@ -218,12 +217,12 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
         - containerPort: 3000
   ```
 
-3. Now we apply the deployment and we create a new **Authors** Pod.
+1. Now we apply the deployment and we create a new **Authors** Pod.
 
     ```sh
     kubectl apply -f deployment.yaml
     ```
-    
+
 #### Step 2: Verify the deployment with kubectl
 
 1. Insert this command and verify the output.
@@ -235,22 +234,21 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     Sample output:
 
     ```sh
-    $ NAME                      READY   STATUS    RESTARTS   AGE
-    $ authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
+    NAME                      READY   STATUS    RESTARTS   AGE
+    authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
     ```
 
-#### Step 3: Verify the deployment with the **Kubernetes dashboard** 
+#### Step 3: Verify the deployment with the **Kubernetes dashboard**
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
 2. Open the Kubernetes dashbord
-   
+
    ![Open the Kubernetes dashbord](../../images/lab-4-deployment-1.png)
 
 3. In the overview you see the created deployment and the pod
 
   ![In the overview you see the created deployment and the pod](../../images/lab-4-deployment-2.png)
-
 
 ### 3. Apply the service
 
@@ -262,7 +260,7 @@ In the service we map the NodePort of the cluster to the port 3000 of the Author
 
 ![service](../../images/lab-4-service.png)
 
-In the [service.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/service-os.yaml) we see a selector of the pod using the label 'app: authors'. 
+In the [service.yaml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/service-os.yaml) we see a selector of the pod using the label 'app: authors'.
 
 ```yaml
 kind: Service
@@ -309,20 +307,19 @@ spec:
   kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
   ```
 
-#### Step 4: Verify the service in the **Kubernetes dashboard** 
+#### Step 4: Verify the service in the **Kubernetes dashboard**
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
-2. Open the Kubernetes dashbord
-   
-  ![](../../images/lab-4-deployment-1.png)
+1. Open the Kubernetes dashbord
 
-3. In the overview scroll down until you see the created service
-   
-  ![](../../images/lab-4-service-1.png)
+  ![deployment](../../images/lab-4-deployment-1.png)
 
+1. In the overview scroll down until you see the created service
 
-#### Step 5: Verify the running Microservice on Kubernetes 
+  ![service](../../images/lab-4-service-1.png)
+
+#### Step 5: Verify the running Microservice on Kubernetes
 
 1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) and show the IP address
 
@@ -333,7 +330,7 @@ spec:
     ```sh
     echo $clusterip
     ```
-    
+
     Example output:
 
     ```sh
@@ -352,7 +349,7 @@ spec:
     Example output:
 
     ```sh
-    $ 31347
+    31347
     ```
 
 3. Open API explorer.
@@ -362,6 +359,7 @@ spec:
     ```
 
     Sample output:
+
     ```sh
     http://184.172.247.228:31347/openapi/ui/
     ```
@@ -370,7 +368,6 @@ spec:
 
     ![authors-java-openapi-explorer](../../images/authors-java-openapi-explorer-kubernetes.png)
 
-
 4. Execute curl to test the **Authors** service.
 
     ```sh
@@ -378,7 +375,8 @@ spec:
     ```
 
     Example output:
-    ```
+
+    ```json
     {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
     ```
 
@@ -390,21 +388,22 @@ spec:
 
   Example output:
 
-   ```sh
-   {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
+   ```json
+   {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"}
    ```
 
 Optional:
 
 1. We can also verify that call in the browser.
 
-  ![](../../images/authors-java-health.png)
+  ![health](../../images/authors-java-health.png)
 
-2. We can simply delete the deployed Authors Microservice with:
-      
+1. We can simply delete the deployed Authors Microservice with:
+
   ```sh
   kubectl delete pods,services -l app=authors
   ```
+
 ---
 
 **Congratulations** you have finished this **hands-on workshop**. Maybe you want to verify your learning in the [Cloud Native Starter Level 1 Badge](https://www.youracclaim.com/org/ibm/badge/cloud-native-starter-level-1).

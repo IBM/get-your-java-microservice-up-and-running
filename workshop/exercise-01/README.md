@@ -1,8 +1,8 @@
 # Running the Java Microservice locally
 
-> _**Note:**_ This lab is structured in **understanding** and **hands-on tasks**. 
+> _**Note:**_ This lab is structured in **understanding** and **hands-on tasks**.
 
-### Step 1: Understanding
+## Step 1: Understanding
 
 In this workshop we run a Microservice that has been implemented with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
@@ -17,13 +17,13 @@ The Microservice has been kept as simple as possible, so that it can be used as 
 
 This service provides a REST API 'getauthor'. Normally we would use a database but in this example we just simulate with local sample data. With this small example we touch the following topics:
 
-* Usage of [Maven](https://maven.apache.org/) for Java 
+* Usage of [Maven](https://maven.apache.org/) for Java
 * Configuration of an [OpenLiberty Server](https://openliberty.io)
 * Implementation of a [REST GET endpoint with MicroProfile](https://openliberty.io/blog/2018/01/31/mpRestClient.html)
-* [Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using a MicroProfile for Kubernetes 
+* [Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using a MicroProfile for Kubernetes
 * Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from [Dockerhub](https://hub.docker.com)
 
-#### Definition of the Image
+### Definition of the Image
 
 For the image we use a stack of open source components to run the Java Microservice on Open Liberty.
 
@@ -36,14 +36,13 @@ Read the article [How to build and run a Hello World Java Microservice](http://h
 
 In the [Dockerfile](../authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
 
-When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs. 
+When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs.
 
 Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 Inside of our Dockerfile we use two stages to build the container image . The reason for the two stages is that we want to be independend of an existing local environment when we build our production services. With this concept we don't have to ensure that e.g. Java and Maven or correct versions of them are installed on the local machine of the developers.
 
 With this two stage approach there is one container responsible to build the Microservice, let us call this container build environment container, and another container will contain the Microservice itself, we call this the production container. Only this production container is later used.
-
 
 #### Build environment container
 
@@ -53,7 +52,7 @@ We use the pom file that we defined before to build our Authors service with `RU
 
 ```dockerfile
 FROM maven:3.5-jdk-8 as BUILD
- 
+
 COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean package
@@ -85,24 +84,22 @@ EXPOSE 3000
 
 That lab needs a local Docker installation.
 
-
 #### Step 1: Test the Microservice in a local container
 
 Open the the Terminal session where you cloned the Cloud-Native-Starter project to your local computer.
 
-```
+```bash
 cd $ROOT_FOLDER/authors-java-jee
 docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-#### Step 2: Open the Swagger UI of the mircoservice in a browser.
+#### Step 2: Open the Swagger UI of the mircoservice in a browser
 
-```
+```bash
 http://localhost:3000/openapi/ui/
 ```
 
 ![Swagger UI](../../images/authors-swagger-ui.png)
-
 
 ---
