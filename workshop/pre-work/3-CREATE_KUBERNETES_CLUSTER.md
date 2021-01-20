@@ -1,18 +1,18 @@
 # Create a free IBM Cloud Kubernetes cluster
 
-### Step 1: Logon to IBM Cloud
+## Step 1: Logon to IBM Cloud
 
-### Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
+## Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
 
-![](../../images/ibmcloud-catalog.png)
+![catalog](../../images/ibmcloud-catalog.png)
 
-### Step 3: Click on "Kubernetes Cluster"
+## Step 3: Click on "Kubernetes Cluster"
 
-### Step 4: Select Free cluster
+## Step 4: Select Free cluster
 
-![](../../images/ibmcloud-create-kubernetes-1.png)
+![k8s](../../images/ibmcloud-create-kubernetes-1.png)
 
-### Step 5: Click on the Kubernetes Services and select "Free"
+## Step 5: Click on the Kubernetes Services and select "Free"
 
 Ensure you set following values in the creation dialog:
 
@@ -21,12 +21,12 @@ Ensure you set following values in the creation dialog:
 
 ![create Kubernetes service](../../images/ibmcloud-create-kubernetes-2.png)
 
-### Step 6: Press "Create custer"
+## Step 6: Press "Create custer"
 
-### Step 7: Now you will be forwarded to your cluster on IBM Cloud and you can verify the status of the creation of your cluster
+## Step 7: Now you will be forwarded to your cluster on IBM Cloud and you can verify the status of the creation of your cluster
 
 The creation of the cluster takes up to **20 min**.
 
-![](../../images/verify-cluster-access-3.png)
+![cluster](../../images/verify-cluster-access-3.png)
 
 ---

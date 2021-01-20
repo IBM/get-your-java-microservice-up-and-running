@@ -1,10 +1,10 @@
 # Exercise 3 - The Java Implementation
 
-> _**Note:**_ This exercise is structured in **understanding** and **hands-on tasks**. 
+> _**Note:**_ This exercise is structured in **understanding** and **hands-on tasks**.
 
-### Step 1: Understand
+## Step 1: Understand
 
-#### 1 Usage of Maven for Java
+### 1 Usage of Maven for Java
 
 We begin with the [Maven](https://maven.apache.org/) part for our Java project.
 
@@ -14,34 +14,34 @@ In the pom file we define the configuration of our Java project with dependencie
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.ibm.cloud</groupId>
-	<artifactId>authors</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.ibm.cloud</groupId>
+ <artifactId>authors</artifactId>
+ <version>1.0-SNAPSHOT</version>
+ <packaging>war</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.microprofile</groupId>
-			<artifactId>microprofile</artifactId>
-			<version>3.0</version>
-			<scope>provided</scope>
-			<type>pom</type>
-		</dependency>
-	</dependencies>
+ <dependencies>
+  <dependency>
+   <groupId>org.eclipse.microprofile</groupId>
+   <artifactId>microprofile</artifactId>
+   <version>3.0</version>
+   <scope>provided</scope>
+   <type>pom</type>
+  </dependency>
+ </dependencies>
 
-	<build>
-		<finalName>authors</finalName>
-	</build>
+ <build>
+  <finalName>authors</finalName>
+ </build>
 
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+ <properties>
+  <maven.compiler.source>1.8</maven.compiler.source>
+  <maven.compiler.target>1.8</maven.compiler.target>
+  <failOnMissingWebXml>false</failOnMissingWebXml>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ </properties>
 </project>
 ```
 
@@ -49,7 +49,7 @@ _REMEMBER:_ We use this pom file to build our Authors service with `RUN mvn -f /
 
 ```dockerfile
 FROM maven:3.5-jdk-8 as BUILD
- 
+
 COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean package
@@ -69,7 +69,7 @@ Also the name of the executable web application is definied in the server.xml.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="OpenLiberty Server">
-	
+
     <featureManager>
         <feature>microProfile-3</feature>
     </featureManager>
@@ -83,20 +83,19 @@ Also the name of the executable web application is definied in the server.xml.
 
 _Note:_ Later we will change the **contextRoot**.
 
-#### 3 Implementation of the REST GET endpoint with MicroProfile
+### 3 Implementation of the REST GET endpoint with MicroProfile
 
-##### 3.1 MicroProfile basics
+#### 3.1 MicroProfile basics
 
 Some definitions:
 
-> Microservice architecture is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
-
-> Eclipse MicroProfile is a modular set of technologies designed so that you can write cloud-native Java™ Microservices. MicroProfile utilizes some of existing tools (JAX-RS, CDI, JSON-P for example), and combine them with new ones to create a baseline platform optimized for a Microservice architecture. 
+> **Microservice architecture** is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
+>
+> **Eclipse MicroProfile** is a modular set of technologies designed so that you can write cloud-native Java™ Microservices. MicroProfile utilizes some of existing tools (JAX-RS, CDI, JSON-P for example), and combine them with new ones to create a baseline platform optimized for a Microservice architecture.
 
 In the following image you see a list of MicroProfile specifications, we will use the red marked ones.
 
-![](../../images/microprofiles.png)
-
+![microprofiles](../../images/microprofiles.png)
 
 ##### 3.2 Java classes needed to expose the Authors service
 
@@ -106,16 +105,14 @@ For the Authors service to expose the REST API we need to implement three classe
 * [Author](https://github.com/IBM/cloud-native-starter/blob/master//authors-java-jee/src/main/java/com/ibm/authors/Author.java) class repesents the data structure we use for the Author.
 * [GetAuthor](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) class repesents the REST API.
 
-![](../../images/authors-java-classdiagram-01.png)
-
-
+![classdiagram](../../images/authors-java-classdiagram-01.png)
 
 ###### 3.2.1 **Class AuthorsApplication**
 
-Our web application does not implement any business or other logic, it simply needs to run on a server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. 
+Our web application does not implement any business or other logic, it simply needs to run on a server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this.
 
 The `AuthorsApplication` class provides access to the classes from the `com.ibm.authors` package at runtime.
-The implementation of the interface class _Application_ enables the usage of easy REST implementation provided by MircoProfile. 
+The implementation of the interface class _Application_ enables the usage of easy REST implementation provided by MircoProfile.
 
 With `@ApplicationPath` from MicroProfile we define the base path of the application.
 
@@ -156,7 +153,7 @@ _REMEMBER:_ In the server.xml configuration we added **MicroProfile** to the Ope
 <featureManager>
         <feature>microProfile-3</feature>
         ....
-</featureManager> 
+</featureManager>
 ```
 
 With the combination of the server.xml and our usage of MicroProfile features in the GetAuthor class we will be able to access an OpenAPI explorer with this URL `http://host:http_port/openapi` later.
@@ -169,49 +166,49 @@ This is the source code of the [GetAuthors class](../src/main/java/com/ibm/autho
 @OpenAPIDefinition(info = @Info(title = "Authors Service", version = "1.0", description = "Authors Service APIs", contact = @Contact(url = "https://github.com/nheidloff/cloud-native-starter", name = "Niklas Heidloff"), license = @License(name = "License", url = "https://github.com/nheidloff/cloud-native-starter/blob/master/LICENSE")))
 public class GetAuthor {
 
-	@GET
-	@APIResponses(value = {
-		@APIResponse(
-	      responseCode = "404",
-	      description = "Author Not Found"
-	    ),
-	    @APIResponse(
-	      responseCode = "200",
-	      description = "Author with requested name",
-	      content = @Content(
-	        mediaType = "application/json",
-	        schema = @Schema(implementation = Author.class)
-	      )
-	    ),
-	    @APIResponse(
-	      responseCode = "500",
-	      description = "Internal service error"  	      
-	    )
-	})
-	@Operation(
-		    summary = "Get specific author",
-		    description = "Get specific author"
-	)
-	public Response getAuthor(@Parameter(
+ @GET
+ @APIResponses(value = {
+  @APIResponse(
+       responseCode = "404",
+       description = "Author Not Found"
+     ),
+     @APIResponse(
+       responseCode = "200",
+       description = "Author with requested name",
+       content = @Content(
+         mediaType = "application/json",
+         schema = @Schema(implementation = Author.class)
+       )
+     ),
+     @APIResponse(
+       responseCode = "500",
+       description = "Internal service error"
+     )
+ })
+ @Operation(
+      summary = "Get specific author",
+      description = "Get specific author"
+ )
+ public Response getAuthor(@Parameter(
             description = "The unique name of the author",
             required = true,
             example = "Niklas Heidloff",
             schema = @Schema(type = SchemaType.STRING))
-			@QueryParam("name") String name) {
-		
-			Author author = new Author();
-			author.name = "Niklas Heidloff";
-			author.twitter = "https://twitter.com/nheidloff";
-			author.blog = "http://heidloff.net";
+   @QueryParam("name") String name) {
 
-			return Response.ok(this.createJson(author)).build();
-	}
+   Author author = new Author();
+   author.name = "Niklas Heidloff";
+   author.twitter = "https://twitter.com/nheidloff";
+   author.blog = "http://heidloff.net";
 
-	private JsonObject createJson(Author author) {
-		JsonObject output = Json.createObjectBuilder().add("name", author.name).add("twitter", author.twitter)
-				.add("blog", author.blog).build();
-		return output;
-	}
+   return Response.ok(this.createJson(author)).build();
+ }
+
+ private JsonObject createJson(Author author) {
+  JsonObject output = Json.createObjectBuilder().add("name", author.name).add("twitter", author.twitter)
+    .add("blog", author.blog).build();
+  return output;
+ }
 }
 ```
 
@@ -221,7 +218,7 @@ _Note:_ Later we will change the return values for the response in the local sou
 
 We have added the class HealthEndpoint to the Authors package as you see in the following diagram.
 
-![](../../images/authors-java-classdiagram-02.png)
+![classdiagram](../../images/authors-java-classdiagram-02.png)
 
 We want to support this [Kubernetes function](https://github.com/OpenLiberty/guide-kubernetes-microprofile-health#checking-the-health-of-microservices-on-kubernetes):
 
@@ -257,27 +254,30 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
       initialDelaySeconds: 40
 ```
 
-### Step 2: Hands-on tasks 
-#### Change the code of the authors Microservice and run the service in a container locally 
+## Step 2: Hands-on tasks
+
+### Change the code of the authors Microservice and run the service in a container locally
 
 _Note:_ That lab does only need Docker and a terminal session on your local machine.
 
-#### Step 1: Open a terminal session on you local machine
+## Step 1: Open a terminal session on you local machine
 
-```sh 
+```sh
 cd $ROOT_FOLDER/authors-java-jee
 docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-#### Step 2: Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi".
+## Step 2: Update server.xml
+
+Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi"
 
 Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in a editor and change the value.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="OpenLiberty Server">
-	
+
     <featureManager>
         <feature>microProfile-3</feature>
     </featureManager>
@@ -289,7 +289,9 @@ Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in 
 </server>
 ```
 
-#### Step 3: Change the @ApplicationPath in the class [AuthorsApplication.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1".
+## Step 3: Update AuthorsApplication.java
+
+Change the @ApplicationPath in the class [AuthorsApplication.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1"
 
 Open the file `cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java` in a editor and change the value.
 
@@ -304,7 +306,9 @@ public class AuthorsApplication extends Application {
 }
 ```
 
-#### Step 4: In the class [GetAuthor.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME".
+## Step 4: Update GetAuthor.java
+
+In the class [GetAuthor.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME"
 
 Open the file `cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java` in a editor and change the value.
 
@@ -314,18 +318,20 @@ public Response getAuthor(@Parameter(
             required = true,
             example = "MY NAME",
             schema = @Schema(type = SchemaType.STRING))
-			@QueryParam("name") String name) {
-		
-			Author author = new Author();
-			author.name = "MY NAME";
-			author.twitter = "https://twitter.com/MY NAME";
-			author.blog = "http://MY NAME.net";
+   @QueryParam("name") String name) {
 
-			return Response.ok(this.createJson(author)).build();
-	}
+   Author author = new Author();
+   author.name = "MY NAME";
+   author.twitter = "https://twitter.com/MY NAME";
+   author.blog = "http://MY NAME.net";
+
+   return Response.ok(this.createJson(author)).build();
+ }
 ```
 
-#### Step 5: In the class [HealthEndpoint.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop".
+## Step 5: Update HealthEndpoint.java
+
+In the class [HealthEndpoint.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop"
 
 ```java
 @Health
@@ -339,7 +345,7 @@ public class HealthEndpoint implements HealthCheck {
 }
 ```
 
-#### Step 6: To test and see how the code works you can run the code locally as a Docker container:
+## Step 6: To test and see how the code works you can run the code locally as a Docker container
 
 ```sh
 cd $ROOT_FOLDER/authors-java-jee
@@ -347,21 +353,20 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-#### Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
+## Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
 
 ```sh
 http://localhost:3000/openapi/ui/
 ```
 
-![](../../images/changed-authors-open-api.png)
+![changed-authors-open-api](../../images/changed-authors-open-api.png)
 
-
-#### Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
+## Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
 
 ```sh
 http://localhost:3000/health
 ```
 
-![](../../images/changed-authors-healthcheck.png)
+![changed-authors-healthcheck](../../images/changed-authors-healthcheck.png)
 
 ---
