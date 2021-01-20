@@ -18,7 +18,7 @@ In the gif below you see the Authors Microservice, which we will run locally in 
 We will deploy this Authors Microservice to Kubernetes on IBM Cloud.
 The gif shows the steps of exercise 3 how we deploy that Microservice to IBM Cloud.
 
-![overview](../images/lab-4-overview.gif)
+![overview](images/lab-4-overview.gif)
 
 ## Estimated time and level
 
@@ -36,7 +36,7 @@ After you complete this workshop, you'll understand the following topics:
 
 You can verify your learning in the **Cloud Native Starter Badge - Level 1**
 
-![Cloud Native Starter Badge - Level 1](../images/cnsl1.png)
+![Cloud Native Starter Badge - Level 1](images/cnsl1.png)
 
 > To be prepared to pass the test of the [**Cloud Native Starter Badge - Level 1**](http://ibm.biz/cloud-native-starter-level-1-badge), you should run the hands-on workshop **virtual** or **face to face**, but you can also run the workshop as a **self service**.
 

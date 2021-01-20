@@ -4,13 +4,13 @@
 
 ## Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
 
-![catalog](../../images/ibmcloud-catalog.png)
+![catalog](../images/ibmcloud-catalog.png)
 
 ## Step 3: Click on "Kubernetes Cluster"
 
 ## Step 4: Select Free cluster
 
-![k8s](../../images/ibmcloud-create-kubernetes-1.png)
+![k8s](../images/ibmcloud-create-kubernetes-1.png)
 
 ## Step 5: Click on the Kubernetes Services and select "Free"
 
@@ -19,7 +19,7 @@ Ensure you set following values in the creation dialog:
 * Cluster name:     cloud-native
 * Resource group:   Default
 
-![create Kubernetes service](../../images/ibmcloud-create-kubernetes-2.png)
+![create Kubernetes service](../images/ibmcloud-create-kubernetes-2.png)
 
 ## Step 6: Press "Create custer"
 
@@ -27,6 +27,6 @@ Ensure you set following values in the creation dialog:
 
 The creation of the cluster takes up to **20 min**.
 
-![cluster](../../images/verify-cluster-access-3.png)
+![cluster](../images/verify-cluster-access-3.png)
 
 ---
