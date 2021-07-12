@@ -2,7 +2,7 @@
 
 > _**Note:**_ This lab is structured in **understanding** and **hands-on tasks**.
 
-## Step 1: Understanding
+### Step 1: Understanding
 
 In this workshop we run a Microservice that has been implemented with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
@@ -23,7 +23,7 @@ This service provides a REST API 'getauthor'. Normally we would use a database b
 * [Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using a MicroProfile for Kubernetes
 * Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from [Dockerhub](https://hub.docker.com)
 
-### Definition of the Image
+#### Definition of the Image
 
 For the image we use a stack of open source components to run the Java Microservice on Open Liberty.
 
@@ -36,7 +36,7 @@ In the [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/auth
 
 When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs.
 
-### Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
+#### Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 Inside of our Dockerfile we use two stages to build the container image . The reason for the two stages is that we want to be independend of an existing local environment when we build our production services. With this concept we don't have to ensure that e.g. Java and Maven or correct versions of them are installed on the local machine of the developers.
 

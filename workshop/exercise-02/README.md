@@ -260,7 +260,7 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
 
 _Note:_ That lab does only need Docker and a terminal session on your local machine.
 
-## Step 1: Open a terminal session on you local machine
+### Step 1: Open a terminal session on you local machine
 
 ```sh
 cd $ROOT_FOLDER/authors-java-jee
@@ -268,7 +268,7 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-## Step 2: Update server.xml
+### Step 2: Update server.xml
 
 Change the contextRoot in [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/articles-java-jee/liberty/server.xml) to something similar like "myapi"
 
@@ -289,7 +289,7 @@ Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in 
 </server>
 ```
 
-## Step 3: Update AuthorsApplication.java
+### Step 3: Update AuthorsApplication.java
 
 Change the @ApplicationPath in the class [AuthorsApplication.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something similar like "myv1"
 
@@ -306,7 +306,7 @@ public class AuthorsApplication extends Application {
 }
 ```
 
-## Step 4: Update GetAuthor.java
+### Step 4: Update GetAuthor.java
 
 In the class [GetAuthor.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something similar like "MY NAME"
 
@@ -329,7 +329,7 @@ public Response getAuthor(@Parameter(
  }
 ```
 
-## Step 5: Update HealthEndpoint.java
+### Step 5: Update HealthEndpoint.java
 
 In the class [HealthEndpoint.java](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something similar like "ok for the workshop"
 
@@ -345,7 +345,7 @@ public class HealthEndpoint implements HealthCheck {
 }
 ```
 
-## Step 6: To test and see how the code works you can run the code locally as a Docker container
+### Step 6: To test and see how the code works you can run the code locally as a Docker container
 
 ```sh
 cd $ROOT_FOLDER/authors-java-jee
@@ -353,7 +353,7 @@ docker build -t authors .
 docker run -i --rm -p 3000:3000 authors
 ```
 
-## Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
+### Step 7: Open the swagger UI of the mircoservice in a browser and verfiy the changes
 
 ```sh
 http://localhost:3000/openapi/ui/
@@ -361,7 +361,7 @@ http://localhost:3000/openapi/ui/
 
 ![changed-authors-open-api](../images/changed-authors-open-api.png)
 
-## Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
+### Step 8: Open the health check of the mircoservice in a browser and verfiy the changes
 
 ```sh
 http://localhost:3000/health
