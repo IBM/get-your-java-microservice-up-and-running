@@ -32,9 +32,7 @@ For the image we use a stack of open source components to run the Java Microserv
 * Open Liberty 18.0.0.4
 * MicroProfile 3.0
 
-Read the article [How to build and run a Hello World Java Microservice](http://heidloff.net/article/how-to-build-and-run-a-hello-world-java-microservice/) to learn more.
-
-In the [Dockerfile](../authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
+In the [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
 
 When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs.
 
