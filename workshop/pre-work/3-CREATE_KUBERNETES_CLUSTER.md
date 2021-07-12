@@ -27,6 +27,6 @@ Ensure you set following values in the creation dialog:
 
 The creation of the cluster takes up to **20 min**.
 
-![cluster](../images/verify-cluster-access-3.png)
+![](../images/verify-cluster-access-4-1.png)
 
 ---
