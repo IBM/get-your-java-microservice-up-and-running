@@ -23,5 +23,5 @@
 ### Additional Resources
 
 * [Cloud-Native-Starter project](https://github.com/IBM/cloud-native-starter)
-* [Security](https://github.com/IBM/cloud-native-starter/tree/master/security)
-* [Reactive](https://github.com/IBM/cloud-native-starter/tree/master/reactive)
+* [Security](https://developer.ibm.com/languages/java/tutorials/secure-your-java-microservices-application-workshop/)
+* [Reactive](https://developer.ibm.com/depmodels/reactive-systems/tutorials/kubernetes-openshift-reactive-endpoints-java-quarkus-micropfile-labs/)
