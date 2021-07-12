@@ -32,11 +32,11 @@ For the image we use a stack of open source components to run the Java Microserv
 * Open Liberty 18.0.0.4
 * MicroProfile 3.0
 
-In the [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
+In the [Dockerfile](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/).
 
 When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs.
 
-Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
+### Using a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 Inside of our Dockerfile we use two stages to build the container image . The reason for the two stages is that we want to be independend of an existing local environment when we build our production services. With this concept we don't have to ensure that e.g. Java and Maven or correct versions of them are installed on the local machine of the developers.
 
