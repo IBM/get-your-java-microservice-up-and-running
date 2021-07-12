@@ -59,7 +59,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 Our Authors Microservice will run on an OpenLiberty Server in a container on Kubernetes.
 
-We need to configure the OpenLiberty server with a [server.xml](../authors-java-jee/liberty/server.xml) file. For our Java implementation we decided to use MicroProfile and within the feature definition in the server.xml we provide this information to our server with the entry `microProfile-3`.
+We need to configure the OpenLiberty server with a [server.xml](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/liberty/server.xml) file. For our Java implementation we decided to use MicroProfile and within the feature definition in the server.xml we provide this information to our server with the entry `microProfile-3`.
 The server must be reached in the network. Therefore we define the httpEndpoint including httpPort we use for our microservice. For configuration details take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
 _IMPORTANT:_ We should remember that this port (`httpPort="3000"`) must be exposed in the Dockerfile for our container and mapped inside the Kubernetes deployment configuration.
@@ -131,7 +131,7 @@ _Note:_ Later we will change the ApplicationPath in this class.
 
 ###### 3.2.2 Class Author
 
-This class simply repesents the data structure we use for the [Author](../src/main/java/com/ibm/authors/Author.java). No MircoProfile feature is used here.
+This class simply repesents the data structure we use for the [Author](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/Author.java). No MircoProfile feature is used here.
 
 ```java
 package com.ibm.authors;
@@ -158,7 +158,7 @@ _REMEMBER:_ In the server.xml configuration we added **MicroProfile** to the Ope
 
 With the combination of the server.xml and our usage of MicroProfile features in the GetAuthor class we will be able to access an OpenAPI explorer with this URL `http://host:http_port/openapi` later.
 
-This is the source code of the [GetAuthors class](../src/main/java/com/ibm/authors/GetAuthor.java) with the mentioned MicroProfile features:
+This is the source code of the [GetAuthors class](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the mentioned MicroProfile features:
 
 ```java
 @ApplicationScoped
