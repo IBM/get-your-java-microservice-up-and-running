@@ -64,7 +64,7 @@ The server must be reached in the network. Therefore we define the httpEndpoint 
 
 _IMPORTANT:_ We should remember that this port (`httpPort="3000"`) must be exposed in the Dockerfile for our container and mapped inside the Kubernetes deployment configuration.
 
-Also the name of the executable web application is definied in the server.xml.
+Also the name of the executable web application is definied in the `server.xml`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
