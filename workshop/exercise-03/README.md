@@ -40,7 +40,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
    You can follow the steps in the **Access** tab, by starting from **After your cluster provision ..** and inserting the commands into your terminal session.
 
-    ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](../images/verify-cluster-access-4.png)
+  ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](../images/verify-cluster-access-4.png)
 
 2. Logon to the IBM Cloud Container Registry (Ensure you are in the `$ROOT_FOLDER/authors-java-jee`)
 
