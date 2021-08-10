@@ -114,6 +114,12 @@ Here is a simplified image for that topic. The deployment.yaml file points to th
 
 ![deployment](../images/lab-4-deployment.png)
 
+Inside the container image `cns-workshop-tools` you can use the editor [nano](https://www.nano-editor.org/).
+
+```sh
+nano deployment.yaml
+```
+
 Let's start with the deployment yaml. For more details see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for deployments.
 
 Definition of `kind` defines this as a `Deployment` configuration.
@@ -197,12 +203,6 @@ This is the full [deployment.yaml](https://github.com/IBM/cloud-native-starter/b
   ```
 
 1. Open the [`../authors-java-jee/deployment/deployment.yaml`](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/deployment/deployment.yaml) file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
-
-Inside the container image `cns-workshop-tools` you can use [nano](https://www.nano-editor.org/).
-
-```sh
-nano deployment.yaml
-```
 
 _Note:_ With the specification ```imagePullPolicy: Always``` we force that the image is pulled from the IBM Cloud Container Registry and not cashed image in Kubernetes is possible used, when we change our container image IBM Cloud Container Registry.
 
