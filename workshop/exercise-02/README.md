@@ -119,9 +119,11 @@ With `@ApplicationPath` from MicroProfile we define the base path of the applica
 ```java
 package com.ibm.authors;
 
+// JAX-RS from Microprofile specification
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
 
+// JAX-RS from Microprofile specification
 @ApplicationPath("v1")
 public class AuthorsApplication extends Application {
 }
@@ -161,12 +163,15 @@ With the combination of the server.xml and our usage of MicroProfile features in
 This is the source code of the [GetAuthors class](https://github.com/IBM/cloud-native-starter/blob/master/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the mentioned MicroProfile features:
 
 ```java
+// JAX-RS from Microprofile specification
 @ApplicationScoped
 @Path("/getauthor")
+// OpenAPI from Microprofile specification
 @OpenAPIDefinition(info = @Info(title = "Authors Service", version = "1.0", description = "Authors Service APIs", contact = @Contact(url = "https://github.com/nheidloff/cloud-native-starter", name = "Niklas Heidloff"), license = @License(name = "License", url = "https://github.com/nheidloff/cloud-native-starter/blob/master/LICENSE")))
 public class GetAuthor {
-
+ // JAX-RS from Microprofile specification
  @GET
+ // OpenAPI from Microprofile specification
  @APIResponses(value = {
   @APIResponse(
        responseCode = "404",
