@@ -406,9 +406,9 @@ Optional:
 
 1. We can simply delete the deployed Authors Microservice with:
 
-  ```sh
-  kubectl delete pods,services -l app=authors
-  ```
+```sh
+kubectl delete -n default deployment authors
+```
 
 ---
 
