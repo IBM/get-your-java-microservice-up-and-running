@@ -337,11 +337,11 @@ spec:
 1. Get cluster (worker node) [IP address](https://cloud.ibm.com/docs/containers?topic=containers-nodeport) and show the IP address
 
     ```sh
-    clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
+    workernodeip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
     ```
 
     ```sh
-    echo $clusterip
+    echo $workernodeip
     ```
 
     Example output:
@@ -368,7 +368,7 @@ spec:
 3. Open API explorer.
 
     ```sh
-    echo http://${clusterip}:${nodeport}/openapi/ui/
+    echo http://${workernodeip}:${nodeport}/openapi/ui/
     ```
 
     Sample output:
@@ -396,7 +396,7 @@ spec:
 5. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
 
    ```sh
-   curl http://${clusterip}:${nodeport}/health
+   curl http://${workernodeip}:${nodeport}/health
    ```
 
   Example output:
