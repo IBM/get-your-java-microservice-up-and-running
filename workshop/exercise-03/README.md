@@ -88,7 +88,7 @@ _Optional:_ Verify the container upload in the IBM Cloud web UI.
 ![authors-java-container-image](../images/ibmcloud-container-registry-upload-1.png)
 
 
-1. List the container images to verify the upload.
+6. List the container images to verify the upload.
 
     ```sh
     ibmcloud cr images
@@ -106,7 +106,7 @@ _Optional:_ Verify the container upload in the IBM Cloud web UI.
     ```
 
 
-2. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
+7. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
 
 ---
 
