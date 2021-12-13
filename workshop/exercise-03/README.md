@@ -64,25 +64,31 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     $ cloud-native-suedbro
     ```
 
-4. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the information from step 3, where we got the list of namespaces.
+4. Build the container image using buildah.
 
-    ```sh
-    ibmcloud cr build -f Dockerfile --tag [YOUR_REGISTRY]/[YOUR_REGISTRY_NAMESPACE]/authors:1 .
-    ```
+```sh
+buildah bud -t [YOUR_REGISTRY]/[YOUR_REGISTRY_NAMESPACE]/authors:v1 .
+```
+5. Now upload the container image to the IBM Cloud Container Registry. We use the information from step 3, where we got the list of namespaces.
 
-    _Example command:_
-    * `[YOUR_REGISTRY] = us.icr.io`
-    * `[YOUR_REGISTRY_NAMESPACE] = cloud-native-suedbro`
+```sh
+buildah push [YOUR_REGISTRY]/[YOUR_REGISTRY_NAMESPACE]/authors:v1 .
+```
+ _Example command:_
+  * `[YOUR_REGISTRY] = us.icr.io`
+  * `[YOUR_REGISTRY_NAMESPACE] = cloud-native-suedbro`
 
-    ```sh
-    ibmcloud cr build -f Dockerfile --tag us.icr.io/cloud-native-suedbro/authors:1 .
-    ```
 
-    _Optional:_ Verify the container upload in the IBM Cloud web UI.
+```sh
+buildah push us.icr.io/cloud-native-suedbro/authors:v1 .
+```
 
-    ![authors-java-container-image](../images/ibmcloud-container-registry-upload-1.png)
+_Optional:_ Verify the container upload in the IBM Cloud web UI.
 
-5. List the container images to verify the upload.
+![authors-java-container-image](../images/ibmcloud-container-registry-upload-1.png)
+
+
+1. List the container images to verify the upload.
 
     ```sh
     ibmcloud cr images
@@ -99,7 +105,8 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     $ OK
     ```
 
-6. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
+
+2. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: `us.icr.io/cloud-native-suedbro/authors` and save it somewhere, we need this later in the `deployment.yaml` configuration.
 
 ---
 
