@@ -59,6 +59,10 @@ These are the sections of this workshop, go through all of them in sequence, sta
  3. [The Java implementation](exercise-02/README.md)
  4. [Deploy to the Kubernetes](exercise-03/README.md)
 
+ Optional labs:
+
+ 1. [Deploy to Code Engine](optional-lab-01/README.md)
+
 ## Compatibility
 
 This workshop has been tested on the following platforms:
