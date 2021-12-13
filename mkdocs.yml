@@ -16,15 +16,14 @@ nav:
   - Setup:
     - Overview: pre-work/README.md
     - Register for IBM Cloud: pre-work/1-REGISTER.md
-    - Apply your feature code: pre-work/2-FEATURECODE.md
     - Create a free Kubernetes cluster: pre-work/3-CREATE_KUBERNETES_CLUSTER.md
     - Configure the container registry: pre-work/4-CONTAINER_REGISTRY.md
     - Setup for local development and cloud deployment: pre-work/5-SETUP-ALL.md
     - Access the Kubernetes cluster: pre-work/6-ACCESS_TO_CLUSTER.md
   - Workshop:
-    - Step 1. Running the Java Microservice locally: exercise-01/README.md
-    - Step 2. The Java implementation: exercise-02/README.md
-    - Step 3. Deploy to the Kubernetes: exercise-03/README.md
+    - Lab 1. Running the Java Microservice locally: exercise-01/README.md
+    - Lab 2. The Java implementation: exercise-02/README.md
+    - Lab 3. Deploy to the Kubernetes: exercise-03/README.md
   - Optional Labs:
     - Lab 1. Deploy to Code Engine: optional-lab-01/README.md
   - References:

@@ -1,4 +1,4 @@
-# Workshop: Get your Java Microservie up and running
+# Workshop: Get your Java Microservice up and running
 
 To access the instructions click on the link below:
 

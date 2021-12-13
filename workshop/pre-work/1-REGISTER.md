@@ -10,9 +10,7 @@
 
 ## Step 3: [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using your account credentials
 
-_Note:_ By default, all new IBM Cloud accounts are set to a [lite version](https://www.ibm.com/cloud/pricing).
-
-The lite account provides free access to a subset of IBM Cloud resources. Lite accounts **don't need a credit-card** to sign up and they **don't expire** after a certain period of time.
-In order to create a free Kubernetes cluster, you need a **feature code**.
+By default, all new IBM Cloud accounts are set to [pay as you go](https://cloud.ibm.com/docs/account?topic=account-accounts).
+Please visit the [IBM Cloud pricing](https://www.ibm.com/cloud/pricing) for details.
 
 ---
