@@ -25,6 +25,8 @@ nav:
     - Step 1. Running the Java Microservice locally: exercise-01/README.md
     - Step 2. The Java implementation: exercise-02/README.md
     - Step 3. Deploy to the Kubernetes: exercise-03/README.md
+  - Optional Labs:
+    - Lab 1. Deploy to Code Engine: optional-lab-01/README.md
   - References:
     - IBM Developer: https://developer.ibm.com
     - IBM Developer Containers: https://developer.ibm.com/technologies/containers

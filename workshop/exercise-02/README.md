@@ -55,7 +55,7 @@ COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean package
 ```
 
-#### 2 Configuration the Open Liberty Server
+#### 2 Configuration of the Open Liberty Server
 
 Our Authors Microservice will run on an OpenLiberty Server in a container on Kubernetes.
 
@@ -375,3 +375,5 @@ http://localhost:3000/health
 ![changed-authors-healthcheck](../images/changed-authors-healthcheck.png)
 
 ---
+
+**Congratulations** you have finished **exercise 2**.

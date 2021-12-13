@@ -2,11 +2,11 @@
 
 ## Step 1: Logon to IBM Cloud
 
-## Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
+## Step 2: Select in the menu "Catalog" and search for "Kubernetes Service"
 
 ![catalog](../images/ibmcloud-catalog.png)
 
-## Step 3: Click on "Kubernetes Cluster"
+## Step 3: Click on "Kubernetes Service"
 
 ## Step 4: Select Free cluster
 
