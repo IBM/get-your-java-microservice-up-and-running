@@ -101,3 +101,5 @@ http://localhost:3000/openapi/ui/
 ![Swagger UI](../images/authors-swagger-ui.png)
 
 ---
+
+**Congratulations** you have finished **exercise 1**.

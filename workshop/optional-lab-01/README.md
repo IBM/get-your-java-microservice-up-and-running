@@ -2,11 +2,11 @@
 
 In this optional lab we will deploy our application to the `IBM Cloud Code Engine`.
 
-## Prerequisites
+### Prerequisites
 
 You need to upload the container image to the `IBM Cloud Container Registry`, if you haven't done that already (please follow the steps in exercise 3 "Deploy to Kubernetes").
 
-## Create a Code Engine Project
+### Create a Code Engine Project
 
 > Note: you need a `PayAsYouGo` Account, in order to use `Code Engine`.
 
@@ -16,7 +16,9 @@ Now you press `Create`, enter a Name, select a suitable location, select `Defaul
 
 Once you've done that, you should be able to see your newly created project [here](https://cloud.ibm.com/codeengine/projects).
 
-## Create an Access Key for your Registry
+### Prepare Container Registry
+
+#### Step 1: Create an Access Key for your Registry
 
 In order for `Code Engine` to access your container image, we need to create an API-Key.
 
@@ -30,7 +32,7 @@ https://cloud.ibm.com/iam/apikeys
 Enter a name and click `Create`. Now copy and save the API-key, as it won't be shown again.
 
 
-## Create a `Registry Access`
+#### Step 2: Create a `Registry Access`
 
 Follow this [link](https://cloud.ibm.com/codeengine/projects), and click on the project you created earlier.
 
@@ -53,9 +55,11 @@ Give it a name, and input the following parameters:
 
 Afterwards click `Create` again.
 
-## Get the location of your container image
+### Deploy to Code Engine
 
-In order to create our ``Code Engine` deployment, we need to know the location of our container image.
+#### Step 1: Get the location of your container image
+
+In order to create our `Code Engine` deployment, we need to know the location of our container image.
 
 From the `IBM Cloud` Dashboard, navigate to `Container registry` and click on `Images`. Alternatively, you can follow this [link](https://cloud.ibm.com/registry/images). 
 
@@ -64,7 +68,7 @@ Now look for your image, click on it and copy its link.
 ![](../images/ce-get-image-url.png)
 
 
-## Deploy the application
+#### Step 2: Deploy the application
 
 Navigate to the `Code Engine` project you created earlier, click on `Applications` and press `Create`.
 
@@ -87,7 +91,7 @@ Set both the `Min Number of Instances` as well as the `Max Number of Instances` 
 
 Now you press create, and wait a bit for `Code Engine` to deploy your application.
 
-## Verify that the deployment worked
+#### Step 3: Verify that the deployment worked
 
 Go to your `Code Engine` Project, and click on `Applications`. If the deployment worked, it should look similar to the following picture.
 
@@ -95,4 +99,6 @@ Go to your `Code Engine` Project, and click on `Applications`. If the deployment
 
 Click on `Open URL`, and wait for the new browsertab to open. Now add `/openapi/ui/` to the end of the URL to check that your application is working properly.
 
+---
 
+**Congratulations** you have finished this **optional lab**.

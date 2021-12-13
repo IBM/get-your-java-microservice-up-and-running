@@ -375,3 +375,5 @@ http://localhost:3000/health
 ![changed-authors-healthcheck](../images/changed-authors-healthcheck.png)
 
 ---
+
+**Congratulations** you have finished **exercise 2**.
