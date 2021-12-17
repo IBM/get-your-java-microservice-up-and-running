@@ -1,5 +1,14 @@
 # Using local Code and the prebuilt Docker image with the Code in the Container
 
+
+### Remember! We use two terminal sessions
+
+> * **The first terminal session** is for the developer focused exercises 1 and 2.
+>
+> * **The second terminal session** is for exercise 3 deploy the Microservice to Kubernetes, here you will work in a preconfigured Container image.
+
+![](../images/cns-terminals.gif)
+
 ## Step 1: Code locally - Open a terminal session and run these commands
 
 Download the project locally to work in the Developer labs locally.
