@@ -2,6 +2,9 @@
 
 In this optional lab we will deploy our application to the `IBM Cloud Code Engine`.
 
+> This optional lab is not needed to complete the `Cloud Native Starter Badge 1`. 
+> If you want to learn more about deploying a Microservice Application to Code Engine, check out [this](https://ibm.github.io/ce-cns/) Workshop.
+
 ### Prerequisites
 
 You need to upload the container image to the `IBM Cloud Container Registry`, if you haven't done that already (please follow the steps in exercise 3 "Deploy to Kubernetes").
